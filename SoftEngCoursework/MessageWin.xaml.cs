@@ -15,13 +15,25 @@ using System.Windows.Shapes;
 namespace SoftEngCoursework
 {
     /// <summary>
-    /// Interaction logic for winMessage.xaml
+    /// Interaction logic for MessageWin.xaml
     /// </summary>
-    public partial class winMessage : Window
+    public partial class MessageWin : Window
     {
-        public winMessage()
+        public MessageWin()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow newWin = new MainWindow();
+            newWin.Show();
+            this.Close();
+        }
+
+        private void _sndBtn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

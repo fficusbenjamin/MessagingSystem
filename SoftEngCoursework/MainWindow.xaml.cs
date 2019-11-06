@@ -27,9 +27,15 @@ namespace SoftEngCoursework
 
         private void message_btn_Click(object sender, RoutedEventArgs e)
         {
-            Window MessageWin = new Window();
-            MessageWin.Show();
+            MessageWin newWin = new MessageWin();
+            newWin.Show();            
             this.Close();
+            
+        }
+
+        private void file_btn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
