@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MessageObject
+﻿namespace MessageObject
 {
-    class Tweet : Message
+    class Email : Message
     {
         private readonly string _messageType;
         private string _messageID, _sender, _messageText, _subject;
 
-        public Tweet(string messageID, string sender, string messageText, string subject)
+        public Email(string messageID, string sender, string messageText, string subject)
         {
-            _messageType = "Tweet";
+            _messageType = "Email";
             _messageID = messageID;
             _sender = sender;
             _messageText = messageText;

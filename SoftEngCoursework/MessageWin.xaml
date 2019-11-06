@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MessageWin" Height="450" Width="500">
     <Grid>
-        <Button x:Name="_bckBtn" Content="Back" HorizontalAlignment="Left" Margin="400,367,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button x:Name="_bckBtn" Content="Back" HorizontalAlignment="Left" Margin="400,367,0,0" VerticalAlignment="Top" Width="75" Click="_bckBtn_Click"/>
         <TextBox x:Name="_hdrTxt" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="Insert Header/ID"/>
         <TextBox x:Name="_bdyTxt" HorizontalAlignment="Left" Height="120" Margin="10,40,0,0" TextWrapping="Wrap" Text="Insert Body" VerticalAlignment="Top" Width="200" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" VerticalContentAlignment="Bottom" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Visible"/>
         <Button x:Name="_sndBtn" Content="Send" HorizontalAlignment="Left" Margin="15,367,0,0" VerticalAlignment="Top" Width="75" Click="_sndBtn_Click"/>

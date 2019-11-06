@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Data;
+using MessageObject;
+using System;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace SoftEngCoursework
 {
@@ -19,12 +11,62 @@ namespace SoftEngCoursework
     /// </summary>
     public partial class MessageWin : Window
     {
+        private static MessageList sendMessage = new MessageList();
+        public static MessageList _sendMessage { get { return sendMessage; } }
+        private string idInput, bodyInput, typeInput, typeChoice;
+        private bool isEntryValid;
+        private string[] file = File.ReadAllLines(@"..\..\..\..\SoftEngCoursework\Messages.json");
+
         public MessageWin()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        
+
+        private void validateEntry()
+        {
+            try
+            {
+                isEntryValid = true;
+                if (_hdrTxt.Text == "")
+                {
+                    isEntryValid = false;
+                    throw new ArgumentException("Field cannot be blank", "Message Header/ID");
+                }
+
+                idInput = _hdrTxt.Text;
+                typeChoice = idInput.Substring(0, 1);
+                System.Console.WriteLine(typeChoice);
+            }
+            catch (Exception execMsg)
+            {
+                MessageBox.Show(execMsg.Message);
+            }
+
+        }
+
+        private void addMessage()
+        {
+            MessageFactory factory = null;
+            switch (typeChoice)
+            {
+                case "S":
+                    factory = new SmsFactory(typeChoice);
+                    break;
+                case "E":
+                    factory = new EmailFactory(typeChoice);
+                    break;
+                case "T":
+                    factory = new TweetFactory(typeChoice);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+
+        private void _bckBtn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow newWin = new MainWindow();
             newWin.Show();
@@ -33,7 +75,13 @@ namespace SoftEngCoursework
 
         private void _sndBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            validateEntry();
+            if (isEntryValid == true)
+            {
+                //addMessage();
+            }
         }
+
+
     }
 }
