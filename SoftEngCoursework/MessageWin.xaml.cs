@@ -17,12 +17,12 @@ namespace SoftEngCoursework
         public static MessageList _sendMessage { get { return sendMessage; } }
         private string idInput, bodyInput, typeInput, typeChoice;
         private bool isEntryValid;
-        //private string[] file = File.ReadAllLines(@"..\..\..\..\SoftEngCoursework\Messages.json");
         string fPth = @"..\..\..\..\SoftEngCoursework\Messages.json";
 
         public MessageWin()
         {
             InitializeComponent();
+            deserialize();
         }
 
         
@@ -82,7 +82,7 @@ namespace SoftEngCoursework
             //message.MessageText = bodyInput;
             sendMessage.add(message);
             System.Console.WriteLine(typeChoice + "arrivato fino a qui");
-            _lstAllMessages.Items.Add("Header/ID: " + message.ID);
+            //_lstAllMessages.Items.Add("Header/ID: " + message.ID);
             wrtJson(message, sendMessage);
         }
 
@@ -128,23 +128,28 @@ namespace SoftEngCoursework
                 addMessage();
                 System.Console.WriteLine(_sendMessage.createFile());
                 string output = JsonConvert.SerializeObject(_sendMessage.messageList);
-                //Product deserializedProduct = JsonConvert.DeserializeObject<Product>(output);
+                
+                showList(_sendMessage.messageList);
 
             }
         }
 
         private void showList(List<Message> list)
         {
-            //creates an empty string
-            string line;
-            //creates a variable with the content of the .csv file
-            var file = new System.IO.StreamReader(@"..\..\..\..\SoftEngCoursework\Messages.json");
-            //while loop to check if the string is different than null
-            while ((line = file.ReadLine() ) != null)
+            foreach (Message message in sendMessage.messageList) 
             {
-                //add the string in the form listbox
-                 _lstAllMessages.Items.Add(line);
+                _lstAllMessages.Items.Add(message.ID+ " " + message.MessageType + " " + message.Sender +" "+ message.Subject +" "+ message.MessageText);
             }
+
+            /*string output = JsonConvert.SerializeObject(_sendMessage.messageList);
+
+
+            var file = new System.IO.StreamReader(@"..\..\..\..\SoftEngCoursework\Messages.json");
+            while ((output = file.ReadLine()) != null)
+            {
+
+                _lstAllMessages.Items.Add(output);
+            }*/
         }
 
         private void wrtJson(Message message, MessageList messageList) 
@@ -158,11 +163,27 @@ namespace SoftEngCoursework
             {
                 File.Create(fPth);
             }
-            string jSon = File.ReadAllText(fPth);
+            string jSon = File.ReadAllText(fPth);            
             messageList = JsonConvert.DeserializeObject<MessageList>(jSon, settings);
             messageList.add(message);
             var convJson = JsonConvert.SerializeObject(sendMessage, Formatting.Indented, settings);
             File.AppendAllText(fPth,convJson);
+        }
+
+        private void deserialize() 
+        {
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.All
+            };
+
+            if (File.Exists(fPth) != true)
+            {
+                File.Create(fPth);
+            }
+            string jSon = File.ReadAllText(fPth);
+            sendMessage = JsonConvert.DeserializeObject<MessageList>(jSon, settings);
+
         }
 
 

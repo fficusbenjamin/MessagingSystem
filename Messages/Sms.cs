@@ -27,6 +27,8 @@
         {
             get { return _sender; }
             set { _sender = value; }
+
+            //in the set validate it
         }
         public override string MessageText
         {

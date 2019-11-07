@@ -11,6 +11,14 @@
         "Sender": null,
         "MessageText": null,
         "Subject": null
+      },
+      {
+        "$type": "MessageObject.Tweet, Messages",
+        "MessageType": "Tweet",
+        "ID": "T123456789",
+        "Sender": null,
+        "MessageText": null,
+        "Subject": null
       }
     ]
   }
