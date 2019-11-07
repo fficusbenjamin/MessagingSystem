@@ -1,0 +1,17 @@
+{
+  "$type": "Data.MessageList, Data",
+  "line": "",
+  "messageList": {
+    "$type": "System.Collections.Generic.List`1[[MessageObject.Message, Messages]], mscorlib",
+    "$values": [
+      {
+        "$type": "MessageObject.Sms, Messages",
+        "MessageType": "SMS",
+        "ID": "S987654321",
+        "Sender": null,
+        "MessageText": null,
+        "Subject": null
+      }
+    ]
+  }
+}

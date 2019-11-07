@@ -1,4 +1,5 @@
 ﻿using MessageObject;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -10,7 +11,7 @@ namespace Data
         public List<Message> messageList { get { return _messageList; } }
 
 
-        private string[] file = File.ReadAllLines(@"..\..\..\..\SoftEngCoursework\Messages.json");
+        private string[] file = File.ReadAllLines(@"..\..\..\..\SoftEngCoursework\Messages.csv");
         public string line = "";
         bool isAlrThere = false;
 
@@ -20,7 +21,7 @@ namespace Data
             {
                 foreach (Message m in messageList)
                 {
-                    line = m.ID + m.MessageType + m.Sender + m.Subject + m.MessageText;
+                    line = m.ID + m.MessageType + m.Sender + m.Subject + m.MessageText + Environment.NewLine;
                 }
             }
             return line;
@@ -30,7 +31,7 @@ namespace Data
         {
             messageList.Add(newMessage);
             createFile();
-            File.AppendAllText(@"..\..\..\..\SoftEngCoursework\Messages.json", createFile());
+            File.AppendAllText(@"..\..\..\..\SoftEngCoursework\Messages.csv", createFile());
         }
     }
 }
