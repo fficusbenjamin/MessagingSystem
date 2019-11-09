@@ -1,17 +1,17 @@
-﻿namespace MessageObject
+﻿namespace BusinessLayer
 {
-    class Sms : Message
+    class Tweet : Message
     {
         private readonly string _messageType;
-        private string _messageID, _sender, _messageText, _subject;
+        private string _messageID, _sender, _messageText, _subject,_body;
 
-        public Sms(string messageID, string sender, string messageText, string subject)
+        public Tweet(string messageID, string sender, string messageText, string subject, string body)
         {
-            _messageType = "SMS";
+            _messageType = "Tweet";
             _messageID = messageID;
             _sender = sender;
             _messageText = messageText;
-            _subject = null;
+            _subject = Subject;
         }
 
         public override string MessageType
@@ -27,8 +27,6 @@
         {
             get { return _sender; }
             set { _sender = value; }
-
-            //in the set validate it
         }
         public override string MessageText
         {
@@ -39,6 +37,11 @@
         {
             get { return _subject; }
             set { _subject = value; }
+        }
+        public override string Body
+        {
+            get { return _body; }
+            set { _body = value; }
         }
     }
 }

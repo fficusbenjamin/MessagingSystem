@@ -1,24 +1,26 @@
 {
-  "$type": "Data.MessageList, Data",
+  "$type": "DB.MessageList, DB",
   "line": "",
   "messageList": {
-    "$type": "System.Collections.Generic.List`1[[MessageObject.Message, Messages]], mscorlib",
+    "$type": "System.Collections.Generic.List`1[[BusinessLayer.Message, BusinessLayer]], mscorlib",
     "$values": [
       {
-        "$type": "MessageObject.Sms, Messages",
-        "MessageType": "SMS",
-        "ID": "S987654321",
-        "Sender": null,
+        "$type": "BusinessLayer.Email, BusinessLayer",
+        "MessageType": "Email",
+        "ID": "E548357893",
         "MessageText": null,
-        "Subject": null
+        "Sender": "gjkfdolgfd",
+        "Subject": "gfdjkghjfd",
+        "Body": "gfjkdgfd"
       },
       {
-        "$type": "MessageObject.Tweet, Messages",
-        "MessageType": "Tweet",
-        "ID": "T123456789",
-        "Sender": null,
+        "$type": "BusinessLayer.Email, BusinessLayer",
+        "MessageType": "Email",
+        "ID": "E645656546",
         "MessageText": null,
-        "Subject": null
+        "Sender": "gigi",
+        "Subject": "riva",
+        "Body": "hdfjosfds"
       }
     ]
   }

@@ -1,4 +1,6 @@
-﻿namespace MessageObject
+﻿using System;
+
+namespace BusinessLayer
 {
     public abstract class Message
     {
@@ -7,6 +9,9 @@
         public abstract string Sender { get; set; }
         public abstract string MessageText { get; set; }
         public abstract string Subject { get; set; }
+        public abstract string Body { get; set; }
+
+        
 
 
         public string getType()
@@ -27,5 +32,8 @@
             }
             return ID;
         }
+        
+        
+
     }
 }

@@ -1,8 +1,8 @@
-﻿namespace MessageObject
+﻿namespace BusinessLayer
 {
     public class TweetFactory : MessageFactory
     {
-        private string _messageID, _sender, _messageText, _subject;
+        private string _messageID, _sender, _messageText, _subject,_body;
 
         public TweetFactory(string ID)
         {
@@ -11,7 +11,7 @@
 
         public override Message GetMessageType()
         {
-            return new Tweet(_messageID, _sender, _messageText, _subject);
+            return new Tweet(_messageID, _sender, _messageText, _subject,_body);
         }
     }
 }

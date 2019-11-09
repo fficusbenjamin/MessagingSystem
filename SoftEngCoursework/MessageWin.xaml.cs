@@ -1,10 +1,10 @@
-﻿using Data;
-using MessageObject;
+﻿using DB;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
+using BusinessLayer;
 
 namespace SoftEngCoursework
 {
@@ -46,8 +46,10 @@ namespace SoftEngCoursework
                 }
 
                 idInput = _hdrTxt.Text;
-                typeChoice = idInput.Substring(0, 1);
-                System.Console.WriteLine(typeChoice);
+                typeChoice = idInput.Substring(0, 1);                
+                bodyInput = _bdyTxt.Text;             
+                
+                
             }
             catch (Exception execMsg)
             {
@@ -56,34 +58,49 @@ namespace SoftEngCoursework
 
         }
 
+        
+        public string getScndLine()
+        {
+            string[] line = System.Text.RegularExpressions.Regex.Split(_bdyTxt.Text, "\r\n|\r|\n");
+            return line[1];
+        }
+        public string getTrdLine()
+        {            
+            string[] line = System.Text.RegularExpressions.Regex.Split(_bdyTxt.Text, "\r\n|\r|\n");
+            return line[2];
+        }
+
         private void addMessage()
         {
             MessageFactory factory = null;
             switch (typeChoice)
             {
                 case "S":
-                    factory = new SmsFactory(typeChoice);
-                    System.Console.WriteLine("SMS");
+                    factory = new SmsFactory(typeChoice);                    
                     break;
                 case "E":
-                    factory = new EmailFactory(typeChoice);
-                    System.Console.WriteLine("Email");
+                    factory = new EmailFactory(typeChoice);                    
                     break;
                 case "T":
                     factory = new TweetFactory(typeChoice);
-                    System.Console.WriteLine("Tweet");
                     break;
                 default:
                     break;
-            }
+            } 
 
             Message message = factory.GetMessageType();
             message.ID = idInput;
             //message.MessageText = bodyInput;
+            
+            string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
+            message.Sender = line1;
+            message.Subject = getScndLine();
+            message.Body = getTrdLine();            
             sendMessage.add(message);
-            System.Console.WriteLine(typeChoice + "arrivato fino a qui");
-            //_lstAllMessages.Items.Add("Header/ID: " + message.ID);
             wrtJson(message, sendMessage);
+            
+            
+            
         }
 
         
@@ -125,10 +142,9 @@ namespace SoftEngCoursework
             validateEntry();
             if (isEntryValid == true)
             {
-                addMessage();
-                System.Console.WriteLine(_sendMessage.createFile());
+                addMessage();                
                 string output = JsonConvert.SerializeObject(_sendMessage.messageList);
-                
+                _lstAllMessages.Items.Clear();
                 showList(_sendMessage.messageList);
 
             }
@@ -167,7 +183,7 @@ namespace SoftEngCoursework
             messageList = JsonConvert.DeserializeObject<MessageList>(jSon, settings);
             messageList.add(message);
             var convJson = JsonConvert.SerializeObject(sendMessage, Formatting.Indented, settings);
-            File.AppendAllText(fPth,convJson);
+            File.WriteAllText(fPth,convJson);
         }
 
         private void deserialize() 
@@ -183,8 +199,9 @@ namespace SoftEngCoursework
             }
             string jSon = File.ReadAllText(fPth);
             sendMessage = JsonConvert.DeserializeObject<MessageList>(jSon, settings);
-
         }
+
+        
 
 
 

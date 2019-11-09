@@ -1,4 +1,4 @@
-﻿namespace MessageObject
+﻿namespace BusinessLayer
 {
     public abstract class MessageFactory
     {

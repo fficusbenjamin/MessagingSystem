@@ -1,8 +1,9 @@
-﻿using System;
+﻿using BusinessLayer;
+using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Data
+namespace DB
 {
     public class MessageList
     {
