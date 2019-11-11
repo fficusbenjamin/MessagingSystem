@@ -9,90 +9,9 @@
         "MessageType": "Email",
         "ID": "E548357893",
         "MessageText": null,
-        "Sender": "gjkfdolgfd",
-        "Subject": "gfdjkghjfd",
-        "Body": "gfjkdgfd"
-      },
-      {
-        "$type": "BusinessLayer.Sms, BusinessLayer",
-        "MessageType": "SMS",
-        "ID": "S483942472",
-        "Sender": "+443334520157",
-        "MessageText": null,
-        "Subject": null,
-        "Body": "fdsfsf"
-      },
-      {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "MessageType": "Email",
-        "ID": "E489342384",
-        "MessageText": null,
-        "Sender": "gigi@jgdis.com",
-        "Subject": "sub",
-        "Body": "text\r\ntext\r\ntext\r\ntext"
-      },
-      {
-        "$type": "BusinessLayer.Sms, BusinessLayer",
-        "MessageType": "SMS",
-        "ID": "S489384038",
-        "Sender": "+447519585398",
-        "MessageText": null,
-        "Subject": null,
-        "Body": "caca\r\ncacac\r\nca\r\nca\r\nca\r\nca\r\ncac"
-      },
-      {
-        "$type": "BusinessLayer.Tweet, BusinessLayer",
-        "MessageType": "Tweet",
-        "ID": "T289532752",
-        "Sender": "ruiewre",
-        "MessageText": null,
-        "Subject": null,
-        "Body": null
-      },
-      {
-        "$type": "BusinessLayer.Tweet, BusinessLayer",
-        "MessageType": "Tweet",
-        "ID": "T748378497",
-        "Sender": "dhsjahkdfsa",
-        "MessageText": null,
-        "Subject": null,
-        "Body": "fsafdsfdsfdshufgdsoagsg"
-      },
-      {
-        "$type": "BusinessLayer.Tweet, BusinessLayer",
-        "MessageType": "Tweet",
-        "ID": "T374837249",
-        "Sender": "hfuhdisofd",
-        "MessageText": null,
-        "Subject": null,
-        "Body": "fdsfdsfgdsgsdgsdg"
-      },
-      {
-        "$type": "BusinessLayer.Tweet, BusinessLayer",
-        "MessageType": "Tweet",
-        "ID": "T374837249",
-        "Sender": "@hgjdfhsgk",
-        "MessageText": null,
-        "Subject": null,
-        "Body": "fdfdsfgsd"
-      },
-      {
-        "$type": "BusinessLayer.Tweet, BusinessLayer",
-        "MessageType": "Tweet",
-        "ID": "T478329487",
-        "Sender": "GIgi",
-        "MessageText": null,
-        "Subject": null,
-        "Body": "RIva"
-      },
-      {
-        "$type": "BusinessLayer.Tweet, BusinessLayer",
-        "MessageType": "Tweet",
-        "ID": "T222222222",
-        "Sender": "@aaron",
-        "MessageText": null,
-        "Subject": null,
-        "Body": "body"
+        "Sender": "ficus@gmail.com",
+        "Subject": "Coursework",
+        "Body": "This coursework is hard"
       }
     ]
   }

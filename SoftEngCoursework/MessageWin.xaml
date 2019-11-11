@@ -7,17 +7,24 @@
         mc:Ignorable="d"
         Title="MessageWin" Height="450" Width="800">
     <Grid>
-        <Button x:Name="_bckBtn" Content="Back" HorizontalAlignment="Left" Margin="708,367,0,0" VerticalAlignment="Top" Width="75" Click="_bckBtn_Click"/>
+        <Button x:Name="_bckBtn" Content="Back" HorizontalAlignment="Left" Margin="120,330,0,0" VerticalAlignment="Top" Width="90" Click="_bckBtn_Click"/>
         <TextBox x:Name="_hdrTxt" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="Insert Header/ID" MaxLength="10" GotFocus="_hdrTxt_GotFocus" LostFocus="_hdrTxt_LostFocus"/>
-        <TextBox x:Name="_bdyTxt" HorizontalAlignment="Left" Height="120" Margin="10,40,0,0" TextWrapping="Wrap" Text="Insert Body" VerticalAlignment="Top" Width="200" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" VerticalContentAlignment="Bottom" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Visible" LostFocus="_bdyTxt_LostFocus" GotFocus="_bdyTxt_GotFocus"/>
-        <Button x:Name="_sndBtn" Content="Send" HorizontalAlignment="Left" Margin="15,367,0,0" VerticalAlignment="Top" Width="75" Click="_sndBtn_Click"/>
-        <ListView x:Name="_lstAllMessages" HorizontalAlignment="Left" Height="320" Margin="398,2,0,0" VerticalAlignment="Top" Width="260" Loaded="_lstAllMessages_Loaded">
+        <TextBox x:Name="_bdyTxt" HorizontalAlignment="Left" Height="120" Margin="10,40,0,0" TextWrapping="Wrap" Text="Insert Body" Width="200" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" VerticalContentAlignment="Bottom" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Visible" LostFocus="_bdyTxt_LostFocus" GotFocus="_bdyTxt_GotFocus" VerticalAlignment="Top"/>
+        <Button x:Name="_sndBtn" Content="Send" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Width="91" Click="_sndBtn_Click" RenderTransformOrigin="0.638,-1.573"/>
+        <ListView x:Name="_lstAllMessages" HorizontalAlignment="Left" Height="69" Margin="270,212,0,0" VerticalAlignment="Top" Width="183" Loaded="_lstAllMessages_Loaded">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <TextBox x:Name="_dsplType" HorizontalAlignment="Left" Height="25" Margin="583,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+        <Label x:Name="_tpLbl" Content="Message Type:" HorizontalAlignment="Left" Margin="475,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="_dsplHdr" HorizontalAlignment="Left" Height="25" Margin="583,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" IsReadOnly="True"/>
+        <Label x:Name="_hdrLbl" Content="Message Header:" HorizontalAlignment="Left" Margin="475,50,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="_dsplBd" HorizontalAlignment="Left" Height="150" Margin="583,0,0,164.667" TextWrapping="Wrap" Width="200" IsReadOnly="True" VerticalAlignment="Bottom"/>
+        <Label x:Name="_hdrBd" Content="Message Body:" HorizontalAlignment="Left" Margin="475,89,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="_fnshBtn" Content="End Session" HorizontalAlignment="Left" Margin="10,367,0,0" VerticalAlignment="Top" Width="200"/>
 
     </Grid>
 </Window>

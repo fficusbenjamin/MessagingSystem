@@ -23,6 +23,7 @@ namespace SoftEngCoursework
         {
             InitializeComponent();
             deserialize();
+            addBx(sendMessage.messageList);
         }
 
         
@@ -105,6 +106,9 @@ namespace SoftEngCoursework
                     message.Body = getTrdLine();
                     sendMessage.add(message);
                     wrtJson(message, sendMessage);
+                    _dsplType.Text = message.MessageType;
+                    _dsplHdr.Text = message.ID;
+                    _dsplBd.Text = message.Body;
                 }
                 if (typeChoice == "S")
                 {
@@ -114,6 +118,9 @@ namespace SoftEngCoursework
                     message.Body = spltTwo();
                     sendMessage.add(message);
                     wrtJson(message, sendMessage);
+                    _dsplType.Text = message.MessageType;
+                    _dsplHdr.Text = message.ID;
+                    _dsplBd.Text = message.Body;
                 }
                 if (typeChoice == "T")
                 {
@@ -123,6 +130,9 @@ namespace SoftEngCoursework
                     message.Body = spltTwo();
                     sendMessage.add(message);
                     wrtJson(message, sendMessage);
+                    _dsplType.Text = message.MessageType;
+                    _dsplHdr.Text = message.ID;
+                    _dsplBd.Text = message.Body;
                 }
 
 
@@ -147,12 +157,12 @@ namespace SoftEngCoursework
 
         private void _hdrTxt_LostFocus(object sender, RoutedEventArgs e)
         {
-           // _hdrTxt.Undo();
+            _hdrTxt.Text = "Insert Header/ID";
         }
 
         private void _bdyTxt_LostFocus(object sender, RoutedEventArgs e)
         {
-            //_bdyTxt.Undo();
+            _bdyTxt.Text = "Insert Body";
         }
 
         private void _lstAllMessages_Loaded(object sender, RoutedEventArgs e)
@@ -189,18 +199,20 @@ namespace SoftEngCoursework
         {
             foreach (Message message in sendMessage.messageList) 
             {
-                _lstAllMessages.Items.Add(message.ID+ " " + message.MessageType + " " + message.Sender +" "+ message.Subject +" "+ message.Body);
+                _lstAllMessages.Items.Add(message.ID/*+ " " + message.MessageType + " " + message.Sender +" "+ message.Subject +" "+ message.Body*/);
             }
 
-            /*string output = JsonConvert.SerializeObject(_sendMessage.messageList);
+  
+        }
 
-
-            var file = new System.IO.StreamReader(@"..\..\..\..\SoftEngCoursework\Messages.json");
-            while ((output = file.ReadLine()) != null)
+        private void addBx(List<Message> list) 
+        {
+            foreach (Message message in sendMessage.messageList) 
             {
-
-                _lstAllMessages.Items.Add(output);
-            }*/
+                _dsplType.Text = message.MessageType;
+                _dsplHdr.Text = message.ID;
+                _dsplBd.Text = message.Body;
+            }
         }
 
         private void wrtJson(Message message, MessageList messageList) 
