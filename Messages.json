@@ -21,6 +21,42 @@
         "Sender": "gigi",
         "Subject": "riva",
         "Body": "hdfjosfds"
+      },
+      {
+        "$type": "BusinessLayer.Email, BusinessLayer",
+        "MessageType": "Email",
+        "ID": "E859437065",
+        "MessageText": null,
+        "Sender": "GIGI",
+        "Subject": "Riva",
+        "Body": "fdfsdfgsdgsd"
+      },
+      {
+        "$type": "BusinessLayer.Email, BusinessLayer",
+        "MessageType": "Email",
+        "ID": "E859437065",
+        "MessageText": null,
+        "Sender": "jfidoshf@fidjsofs.com",
+        "Subject": "fhfhdohsfodhfhdjsfhdjshfdhsfjhdsjfhjdhsfdjhsfjdhsfhdjshfhdsfjdhsfhdjshfdshfd",
+        "Body": "hfudasfjhdjsfhdshfjhdsf"
+      },
+      {
+        "$type": "BusinessLayer.Email, BusinessLayer",
+        "MessageType": "Email",
+        "ID": "E111111111",
+        "MessageText": null,
+        "Sender": "david@gmail.com",
+        "Subject": "djdjd",
+        "Body": "d"
+      },
+      {
+        "$type": "BusinessLayer.Email, BusinessLayer",
+        "MessageType": "Email",
+        "ID": "E947320745",
+        "MessageText": null,
+        "Sender": "hduihfsou@fijfjsiflf.com",
+        "Subject": "hdufhif",
+        "Body": "fsdgfdg\r\ngfdgfdg\r\nfgdgfd\r\nggfdgf\r\ngfdgfd\r\ngfd"
       }
     ]
   }

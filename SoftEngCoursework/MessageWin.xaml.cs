@@ -65,39 +65,48 @@ namespace SoftEngCoursework
             return line[1];
         }
         public string getTrdLine()
-        {            
-            string[] line = System.Text.RegularExpressions.Regex.Split(_bdyTxt.Text, "\r\n|\r|\n");
+        {
+            //string[] line = System.Text.RegularExpressions.Regex.Split(_bdyTxt.Text, "\r\n|\r|\n");
+            string[] line = _bdyTxt.Text.Split(new string[] { "\r\n" }, 3, StringSplitOptions.None); 
             return line[2];
         }
 
         private void addMessage()
         {
-            MessageFactory factory = null;
-            switch (typeChoice)
+            try
             {
-                case "S":
-                    factory = new SmsFactory(typeChoice);                    
-                    break;
-                case "E":
-                    factory = new EmailFactory(typeChoice);                    
-                    break;
-                case "T":
-                    factory = new TweetFactory(typeChoice);
-                    break;
-                default:
-                    break;
-            } 
+                MessageFactory factory = null;
+                switch (typeChoice)
+                {
+                    case "S":
+                        factory = new SmsFactory(typeChoice);
+                        break;
+                    case "E":
+                        factory = new EmailFactory(typeChoice);
+                        break;
+                    case "T":
+                        factory = new TweetFactory(typeChoice);
+                        break;
+                    default:
+                        break;
+                }
 
-            Message message = factory.GetMessageType();
-            message.ID = idInput;
-            //message.MessageText = bodyInput;
+                Message message = factory.GetMessageType();
+                message.ID = idInput;
+                //message.MessageText = bodyInput;
+
+                string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
+                message.Sender = line1;
+                message.Subject = getScndLine();
+                message.Body = getTrdLine();
+                sendMessage.add(message);
+                wrtJson(message, sendMessage);
+            }
+            catch(Exception MESSAGE)
+            {
+                MessageBox.Show(MESSAGE.Message);
+            }
             
-            string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
-            message.Sender = line1;
-            message.Subject = getScndLine();
-            message.Body = getTrdLine();            
-            sendMessage.add(message);
-            wrtJson(message, sendMessage);
             
             
             
