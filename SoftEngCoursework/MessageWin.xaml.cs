@@ -55,16 +55,20 @@ namespace SoftEngCoursework
             {
                 MessageBox.Show(execMsg.Message);
             }
-
         }
 
+        private string spltTwo() 
+        {
+            string[] line = _bdyTxt.Text.Split(new string[] { "\r\n" }, 2, StringSplitOptions.None);
+            return line[1];
+        }
         
-        public string getScndLine()
+        private string getScndLine()
         {
             string[] line = System.Text.RegularExpressions.Regex.Split(_bdyTxt.Text, "\r\n|\r|\n");
             return line[1];
         }
-        public string getTrdLine()
+        private string getTrdLine()
         {
             //string[] line = System.Text.RegularExpressions.Regex.Split(_bdyTxt.Text, "\r\n|\r|\n");
             string[] line = _bdyTxt.Text.Split(new string[] { "\r\n" }, 3, StringSplitOptions.None); 
@@ -90,21 +94,43 @@ namespace SoftEngCoursework
                     default:
                         break;
                 }
-
                 Message message = factory.GetMessageType();
-                message.ID = idInput;
-                //message.MessageText = bodyInput;
+                
+                if (typeChoice == "E") 
+                {
+                    message.ID = idInput;
+                    string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
+                    message.Sender = line1;
+                    message.Subject = getScndLine();
+                    message.Body = getTrdLine();
+                    sendMessage.add(message);
+                    wrtJson(message, sendMessage);
+                }
+                if (typeChoice == "S")
+                {
+                    message.ID = idInput;
+                    string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
+                    message.Sender = line1;
+                    message.Body = spltTwo();
+                    sendMessage.add(message);
+                    wrtJson(message, sendMessage);
+                }
+                if (typeChoice == "T")
+                {
+                    message.ID = idInput;
+                    string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
+                    message.Sender = line1;
+                    message.Body = spltTwo();
+                    sendMessage.add(message);
+                    wrtJson(message, sendMessage);
+                }
 
-                string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
-                message.Sender = line1;
-                message.Subject = getScndLine();
-                message.Body = getTrdLine();
-                sendMessage.add(message);
-                wrtJson(message, sendMessage);
+
+
             }
-            catch(Exception MESSAGE)
+            catch(Exception diagBox)
             {
-                MessageBox.Show(MESSAGE.Message);
+                MessageBox.Show(diagBox.Message);
             }
             
             
@@ -163,7 +189,7 @@ namespace SoftEngCoursework
         {
             foreach (Message message in sendMessage.messageList) 
             {
-                _lstAllMessages.Items.Add(message.ID+ " " + message.MessageType + " " + message.Sender +" "+ message.Subject +" "+ message.MessageText);
+                _lstAllMessages.Items.Add(message.ID+ " " + message.MessageType + " " + message.Sender +" "+ message.Subject +" "+ message.Body);
             }
 
             /*string output = JsonConvert.SerializeObject(_sendMessage.messageList);

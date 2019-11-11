@@ -1,4 +1,6 @@
-﻿namespace BusinessLayer
+﻿using System;
+
+namespace BusinessLayer
 {
     class Sms : Message
     {
@@ -27,9 +29,13 @@
         public override string Sender
         {
             get { return _sender; }
-            set { _sender = value; }
+            set 
+            {
+                valSender(value);
+                _sender = value; 
+            }
 
-            //in the set validate it
+            
         }
         public override string MessageText
         {
@@ -45,6 +51,25 @@
         {
             get { return _body; }
             set { _body = value; }
+        }
+
+
+        public string valSender(string val)
+        {
+            System.Text.RegularExpressions.Regex rNmbr = new System.Text.RegularExpressions.Regex(@"(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})");
+            if (val == "")
+            {
+                val = null;
+                throw new Exception("Field cannot be blank, number");
+
+            }
+            if (!rNmbr.IsMatch(val))
+            {
+                val = null;
+                throw new Exception("Field is not a valid mobile number");
+
+            }
+            return val;
         }
     }
 }

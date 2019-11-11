@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows;
 
 namespace BusinessLayer
 {
@@ -53,7 +52,8 @@ namespace BusinessLayer
         public override string Subject
         {
             get { return _subject; }
-            set {
+            set 
+            {
                 valSubj(value);
                 _subject = value;
 
@@ -69,29 +69,19 @@ namespace BusinessLayer
         public string valSender(string val) 
         {
             System.Text.RegularExpressions.Regex rEmail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
-            //try
-            //{
                 if (val == "")
                 {
                     val = null;
                     throw new Exception("Field cannot be blank, email address");
                     
                 }
-
                 if (!rEmail.IsMatch(val))
                 {
                     val = null;
                     throw new Exception("Field is not a valid email address");
                     
-                }
-                
-            //}
-            //catch (Exception execMsg)
-            //{
-            //    MessageBox.Show(execMsg.Message);
-            //}
+                }                            
             return val;
-
         }
 
         public string valSubj(string val)

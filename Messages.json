@@ -14,49 +14,85 @@
         "Body": "gfjkdgfd"
       },
       {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "MessageType": "Email",
-        "ID": "E645656546",
+        "$type": "BusinessLayer.Sms, BusinessLayer",
+        "MessageType": "SMS",
+        "ID": "S483942472",
+        "Sender": "+443334520157",
         "MessageText": null,
-        "Sender": "gigi",
-        "Subject": "riva",
-        "Body": "hdfjosfds"
+        "Subject": null,
+        "Body": "fdsfsf"
       },
       {
         "$type": "BusinessLayer.Email, BusinessLayer",
         "MessageType": "Email",
-        "ID": "E859437065",
+        "ID": "E489342384",
         "MessageText": null,
-        "Sender": "GIGI",
-        "Subject": "Riva",
-        "Body": "fdfsdfgsdgsd"
+        "Sender": "gigi@jgdis.com",
+        "Subject": "sub",
+        "Body": "text\r\ntext\r\ntext\r\ntext"
       },
       {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "MessageType": "Email",
-        "ID": "E859437065",
+        "$type": "BusinessLayer.Sms, BusinessLayer",
+        "MessageType": "SMS",
+        "ID": "S489384038",
+        "Sender": "+447519585398",
         "MessageText": null,
-        "Sender": "jfidoshf@fidjsofs.com",
-        "Subject": "fhfhdohsfodhfhdjsfhdjshfdhsfjhdsjfhjdhsfdjhsfjdhsfhdjshfhdsfjdhsfhdjshfdshfd",
-        "Body": "hfudasfjhdjsfhdshfjhdsf"
+        "Subject": null,
+        "Body": "caca\r\ncacac\r\nca\r\nca\r\nca\r\nca\r\ncac"
       },
       {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "MessageType": "Email",
-        "ID": "E111111111",
+        "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "MessageType": "Tweet",
+        "ID": "T289532752",
+        "Sender": "ruiewre",
         "MessageText": null,
-        "Sender": "david@gmail.com",
-        "Subject": "djdjd",
-        "Body": "d"
+        "Subject": null,
+        "Body": null
       },
       {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "MessageType": "Email",
-        "ID": "E947320745",
+        "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "MessageType": "Tweet",
+        "ID": "T748378497",
+        "Sender": "dhsjahkdfsa",
         "MessageText": null,
-        "Sender": "hduihfsou@fijfjsiflf.com",
-        "Subject": "hdufhif",
-        "Body": "fsdgfdg\r\ngfdgfdg\r\nfgdgfd\r\nggfdgf\r\ngfdgfd\r\ngfd"
+        "Subject": null,
+        "Body": "fsafdsfdsfdshufgdsoagsg"
+      },
+      {
+        "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "MessageType": "Tweet",
+        "ID": "T374837249",
+        "Sender": "hfuhdisofd",
+        "MessageText": null,
+        "Subject": null,
+        "Body": "fdsfdsfgdsgsdgsdg"
+      },
+      {
+        "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "MessageType": "Tweet",
+        "ID": "T374837249",
+        "Sender": "@hgjdfhsgk",
+        "MessageText": null,
+        "Subject": null,
+        "Body": "fdfdsfgsd"
+      },
+      {
+        "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "MessageType": "Tweet",
+        "ID": "T478329487",
+        "Sender": "GIgi",
+        "MessageText": null,
+        "Subject": null,
+        "Body": "RIva"
+      },
+      {
+        "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "MessageType": "Tweet",
+        "ID": "T222222222",
+        "Sender": "@aaron",
+        "MessageText": null,
+        "Subject": null,
+        "Body": "body"
       }
     ]
   }
