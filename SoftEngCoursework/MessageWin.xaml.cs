@@ -157,12 +157,20 @@ namespace SoftEngCoursework
 
         private void _hdrTxt_LostFocus(object sender, RoutedEventArgs e)
         {
-            _hdrTxt.Text = "Insert Header/ID";
+            if (_hdrTxt.Text == "") 
+            {
+                _hdrTxt.Text = "Insert Header/ID";
+            }
+            
         }
 
         private void _bdyTxt_LostFocus(object sender, RoutedEventArgs e)
         {
-            _bdyTxt.Text = "Insert Body";
+            if (_bdyTxt.Text == "") 
+            {
+                _bdyTxt.Text = "Insert Body";
+            }
+            
         }
 
         private void _lstAllMessages_Loaded(object sender, RoutedEventArgs e)
@@ -203,6 +211,18 @@ namespace SoftEngCoursework
             }
 
   
+        }
+
+        private void _lstAllMessages_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            string selMsg = _lstAllMessages.SelectedItem.ToString();
+            string selId = selMsg.Substring(0, 10);
+            
+            find(selId);
+            
+             _dsplHdr.Text = selId;
+            _dsplType.Text = find(selId).MessageType;
+            _dsplBd.Text = find(selId).Body;
         }
 
         private void addBx(List<Message> list) 
@@ -248,7 +268,19 @@ namespace SoftEngCoursework
             sendMessage = JsonConvert.DeserializeObject<MessageList>(jSon, settings);
         }
 
-        
+        public Message find(string id)
+        {
+            foreach (Message m in MessageWin.sendMessage.messageList)
+            {
+                if (id == m.ID)
+                {
+                    return m;
+                }
+            }
+            return null;
+        }
+
+
 
 
 

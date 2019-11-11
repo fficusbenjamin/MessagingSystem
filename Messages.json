@@ -12,6 +12,15 @@
         "Sender": "ficus@gmail.com",
         "Subject": "Coursework",
         "Body": "This coursework is hard"
+      },
+      {
+        "$type": "BusinessLayer.Sms, BusinessLayer",
+        "MessageType": "SMS",
+        "ID": "S748372497",
+        "Sender": "+4476849375",
+        "MessageText": null,
+        "Subject": null,
+        "Body": "Hey man how you doing? LOL"
       }
     ]
   }
