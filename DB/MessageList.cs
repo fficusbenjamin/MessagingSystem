@@ -11,11 +11,11 @@ namespace DB
         public List<Message> messageList { get { return _messageList; } }
 
 
-        private string[] file = File.ReadAllLines(@"..\..\..\..\SoftEngCoursework\Messages.csv");
+        //private string[] file = File.ReadAllLines(@"..\..\..\..\SoftEngCoursework\Messages.csv");
         public string line = "";
         bool isAlrThere = false;
 
-        public string createFile()
+        /*public string createFile()
         {
             if (isAlrThere == true)
             {
@@ -25,13 +25,13 @@ namespace DB
                 }
             }
             return line;
-        }
+        }*/
 
         public void add(Message newMessage)
         {
             messageList.Add(newMessage);
-            createFile();
-            File.AppendAllText(@"..\..\..\..\SoftEngCoursework\Messages.csv", createFile());
+            /*createFile();
+            File.AppendAllText(@"..\..\..\..\SoftEngCoursework\Messages.csv", createFile());*/
         }
     }
 }

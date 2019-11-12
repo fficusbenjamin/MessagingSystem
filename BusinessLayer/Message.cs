@@ -32,7 +32,16 @@ namespace BusinessLayer
             }
             return ID;
         }
-        
+        public string getSubject() 
+        {
+            System.Text.RegularExpressions.Regex rSir = new System.Text.RegularExpressions.Regex(@"SIR ([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}");
+
+            if (rSir.IsMatch(Subject)) 
+            {
+                Sir sir = new Sir(ID,Sender,Subject,Body);
+            }
+            return Subject;
+        }
         
 
     }

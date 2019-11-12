@@ -19,6 +19,10 @@ namespace BusinessLayer
             _body = body;
         }
 
+        public Email() { }
+
+        
+
         public override string MessageType
         {
             get { return _messageType; }
@@ -54,7 +58,7 @@ namespace BusinessLayer
             get { return _subject; }
             set 
             {
-                valSubj(value);
+                
                 _subject = value;
 
             }     
@@ -62,13 +66,15 @@ namespace BusinessLayer
         public override string Body
         {
             get { return _body; }
-            set { _body = value; }
+            set {
+                valBd(value);
+                _body = value; }
         }
 
 
         public string valSender(string val) 
         {
-            System.Text.RegularExpressions.Regex rEmail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+                System.Text.RegularExpressions.Regex rEmail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
                 if (val == "")
                 {
                     val = null;
@@ -84,60 +90,25 @@ namespace BusinessLayer
             return val;
         }
 
-        public string valSubj(string val)
+        
+
+        
+
+        public string valBd(string val)
         {
-            System.Text.RegularExpressions.Regex lnght = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][0-9][,./-]{20}");
-            //try
-            //{
-                if (val == "")
-                {
-                    val = null;
-                    throw new Exception("Field cannot be blank, subject");
+            if (val == "")
+            {
+                val = null;
+                throw new Exception("Field cannot be blank, body of the email");
 
-                }
+            }
+            if (val.Length > 1028)
+            {
+                val = null;
+                throw new Exception("Email cannot be longer than 1028 characters");
 
-                if (val.Length > 20)
-                {
-                    val = null;
-                    throw new Exception("Subject is too long");
-
-                }
-
-            //}
-            //catch (Exception execMsg)
-            //{
-            //    MessageBox.Show(execMsg.Message);
-            //}
+            }
             return val;
-
-        }
-
-        public string valBody(string val)
-        {
-            System.Text.RegularExpressions.Regex lnght = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][0-9][,./-]{20}");
-            //try
-            //{
-                if (val == "")
-                {
-                    val = null;
-                    throw new Exception("Field cannot be blank, body");
-
-                }
-
-                if (!lnght.IsMatch(val))
-                {
-                    val = null;
-                    throw new Exception("Subject is too long");
-
-                }
-
-            //}
-            //catch (Exception execMsg)
-            //{
-            //    MessageBox.Show(execMsg.Message);
-            //}
-            return val;
-
         }
 
     }

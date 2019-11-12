@@ -50,7 +50,9 @@ namespace BusinessLayer
         public override string Body
         {
             get { return _body; }
-            set { _body = value; }
+            set {
+                valBd(value);
+                _body = value; }
         }
 
 
@@ -67,6 +69,24 @@ namespace BusinessLayer
             {
                 val = null;
                 throw new Exception("Field is not a valid mobile number");
+
+            }
+            return val;
+        }
+
+
+        public string valBd(string val)
+        {
+            if (val == "")
+            {
+                val = null;
+                throw new Exception("Field cannot be blank, text");
+
+            }
+            if (val.Length >140)
+            {
+                val = null;
+                throw new Exception("Text cannot be longer than 140 characters");
 
             }
             return val;

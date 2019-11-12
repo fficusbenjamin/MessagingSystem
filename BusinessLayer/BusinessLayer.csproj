@@ -62,6 +62,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Sir.cs" />
+    <Compile Include="SirFactory.cs" />
     <Compile Include="Sms.cs" />
     <Compile Include="SmsFactory.cs" />
     <Compile Include="Tweet.cs" />

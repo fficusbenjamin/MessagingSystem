@@ -75,12 +75,14 @@ namespace SoftEngCoursework
             string[] line = _bdyTxt.Text.Split(new string[] { "\r\n" }, 3, StringSplitOptions.None); 
             return line[2];
         }
+        
 
         private void addMessage()
         {
             try
             {
                 MessageFactory factory = null;
+                MessageFactory sFact = null;
                 switch (typeChoice)
                 {
                     case "S":
@@ -88,6 +90,7 @@ namespace SoftEngCoursework
                         break;
                     case "E":
                         factory = new EmailFactory(typeChoice);
+                        sFact = new SirFactory(typeChoice);
                         break;
                     case "T":
                         factory = new TweetFactory(typeChoice);
@@ -96,19 +99,43 @@ namespace SoftEngCoursework
                         break;
                 }
                 Message message = factory.GetMessageType();
+
+                
                 
                 if (typeChoice == "E") 
                 {
-                    message.ID = idInput;
+                    System.Text.RegularExpressions.Regex rSir = new System.Text.RegularExpressions.Regex(@"SIR ([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}");
                     string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
-                    message.Sender = line1;
-                    message.Subject = getScndLine();
-                    message.Body = getTrdLine();
-                    sendMessage.add(message);
-                    wrtJson(message, sendMessage);
-                    _dsplType.Text = message.MessageType;
-                    _dsplHdr.Text = message.ID;
-                    _dsplBd.Text = message.Body;
+
+
+                    if (rSir.IsMatch(getScndLine()))
+                    {
+                        Message sir = sFact.GetMessageType();
+
+                        sir.ID = idInput;
+                        sir.Sender = line1;
+                        sir.Subject = getScndLine();
+                        sir.Body = getTrdLine();
+                        sendMessage.add(sir);
+                        wrtJson(sir, sendMessage);
+                        _dsplType.Text = sir.MessageType;
+                        _dsplHdr.Text = sir.ID;
+                        _dsplBd.Text = sir.Subject + "\n" + sir.Body;
+                    }
+                    else 
+                    {
+
+                        message.ID = idInput;
+                        message.Sender = line1;
+                        message.Subject = getScndLine();
+                        message.Body = getTrdLine();
+                        sendMessage.add(message);
+                        wrtJson(message, sendMessage);
+                        _dsplType.Text = message.MessageType;
+                        _dsplHdr.Text = message.ID;
+                        _dsplBd.Text = message.Body;
+                    }
+
                 }
                 if (typeChoice == "S")
                 {
@@ -207,7 +234,7 @@ namespace SoftEngCoursework
         {
             foreach (Message message in sendMessage.messageList) 
             {
-                _lstAllMessages.Items.Add(message.ID/*+ " " + message.MessageType + " " + message.Sender +" "+ message.Subject +" "+ message.Body*/);
+                _lstAllMessages.Items.Add(message.ID+ " " + message.MessageType /*+ " " + message.Sender +" "+ message.Subject +" "+ message.Body*/);
             }
 
   
@@ -218,11 +245,11 @@ namespace SoftEngCoursework
             string selMsg = _lstAllMessages.SelectedItem.ToString();
             string selId = selMsg.Substring(0, 10);
             
-            find(selId);
+            Message message = find(selId);
             
-             _dsplHdr.Text = selId;
-            _dsplType.Text = find(selId).MessageType;
-            _dsplBd.Text = find(selId).Body;
+            _dsplHdr.Text = selId;
+            _dsplType.Text = message.MessageType;
+            _dsplBd.Text = message.Sender +"\n"+ message.Subject +"\n"+ message.Body;
         }
 
         private void addBx(List<Message> list) 
