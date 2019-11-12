@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace BusinessLayer
 {
@@ -6,6 +8,8 @@ namespace BusinessLayer
     {
         private readonly string _messageType;
         private string _messageID, _sender, _subject,_body;
+        public List<string> tagList = new List<string>();
+        public List<string> mntsList = new List<string>();
 
         public Tweet(string messageID, string sender, string subject, string body)
         {
@@ -62,6 +66,51 @@ namespace BusinessLayer
                 throw new Exception("Field is not a valid Twitter handle");
 
             }
+            return val;
+        }
+
+        public string valBd(string val) 
+        {
+            System.Text.RegularExpressions.Regex rHsh = new System.Text.RegularExpressions.Regex(@"\B(\#[a-zA-Z]+\b)(?!;)");
+
+            Dictionary<string, string> textspeak = new Dictionary<string, string>();
+
+            foreach (string line in File.ReadAllLines(@"..\..\..\..\SoftEngCoursework\textwords.csv"))
+            {
+                string[] keyvalue = line.Split(',');
+                if (keyvalue.Length == 2)
+                {
+                    textspeak.Add(keyvalue[0], keyvalue[1]);
+                }
+
+
+            }
+            string[] msgSplit = val.Split(' ');
+
+            foreach (var entry in textspeak)
+            {
+                val = val.Replace(entry.Key, entry.Key + " <" + entry.Value + ">");
+            }
+
+            for (int i = 0; i < msgSplit.Length; i++)
+            {
+                if (rHsh.IsMatch(msgSplit[i]))
+                {
+                    tagList.Add(msgSplit[i]);
+                }
+            }
+
+            //Get mentions
+            for (int i = 0; i < val.Length; i++)
+            {
+                if (msgSplit[i][0] == '@')
+                {
+                    mntsList.Add(msgSplit[i]);
+                }
+            }
+            System.IO.File.AppendAllLines(@"..\..\..\..\SoftEngCoursework\hashtags.txt", tagList);
+            System.IO.File.AppendAllLines(@"..\..\..\..\SoftEngCoursework\mentions.txt", mntsList);
+
             return val;
         }
     }

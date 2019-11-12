@@ -7,12 +7,9 @@ SMS:
 EMAIL: 
 	
 	
-	text = 1028 char max/ may contain hypertext
+	may contain hypertext, quarantine file
 
-TWEETS:
-	
-	text = check abbr
-	hashtags = #
+
 	
 in another WPF show those
 
@@ -21,10 +18,8 @@ Mention list
 
 Trending list
 	every # in the body
+sir list
+	code and type
 
 
-create a new class for the SIR
-with sender
-
-read the csv creating a dictionary and then compare the key and grab the value keepoing the key adding the value
-
+open the file dialog csv file

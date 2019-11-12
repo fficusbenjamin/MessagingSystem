@@ -80,7 +80,7 @@ namespace BusinessLayer
                 throw new Exception("Field cannot be blank, text");
 
             }
-            if (val.Length >140)
+            if (val.Length > 140)
             {
                 val = null;
                 throw new Exception("Text cannot be longer than 140 characters");
