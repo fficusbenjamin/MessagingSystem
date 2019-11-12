@@ -9,7 +9,8 @@ namespace BusinessLayer
    class Sir : Message
     {
         private readonly string _messageType;
-        private string _messageID, _sender, _messageText, _subject, _body;
+
+        private string _messageID, _sender, _subject, _body;
         public Sir(string messageID, string sender, string subject, string body)
         {
             _messageType = "Email";
@@ -17,6 +18,7 @@ namespace BusinessLayer
             _sender = sender;
             _subject = subject;
             _body = body;
+            
         }
 
         public override string MessageType
@@ -28,11 +30,7 @@ namespace BusinessLayer
             get { return _messageID; }
             set { _messageID = value; }
         }
-        public override string MessageText 
-        {
-            get { return _messageText; }
-            set { _messageText = value; }
-        }
+        
 
         public override string Sender
         {
@@ -50,7 +48,9 @@ namespace BusinessLayer
         public override string Body
         {
             get { return _body; }
-            set { _body = value; }
+            set {
+                valBd(value);
+                _body = value; }
         }
 
         
@@ -91,6 +91,61 @@ namespace BusinessLayer
             }
             return val;
         }
+
+        private string getFrstLine()
+        {
+            string[] line = _body.Split(new string[] { "\r\n" }, 3, StringSplitOptions.None);
+            return line[0];
+        }
+        private string getScdLine()
+        {
+            string[] line = _body.Split(new string[] { "\r\n" }, 3, StringSplitOptions.None);
+            return line[1];
+        }
+
+        public string valBd(string val) 
+        {
+            System.Text.RegularExpressions.Regex rCode = new System.Text.RegularExpressions.Regex(@"[0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9]");
+            List<string> NatInc = new List<string>();
+            NatInc.Add("Theft of Properties");
+            NatInc.Add("Staff Attack");
+            NatInc.Add("Device Damage");
+            NatInc.Add("Raid");
+            NatInc.Add("Customer Attack");
+            NatInc.Add("Staff Abuse");
+            NatInc.Add("Bomb Threat");
+            NatInc.Add("Terrorism");
+            NatInc.Add("Sport Injury");
+            NatInc.Add("Personal Info Leak");
+
+            foreach (string inc in NatInc )
+            {
+                if (getScdLine() != inc) 
+                {
+                    val = null;
+                    throw new Exception("Field is not a valid Incident");
+                }
+            }
+
+
+            if (!rCode.IsMatch(getFrstLine())) 
+            {
+                val = null;
+                throw new Exception("Field is not a valid Sport Centre Code");
+            }
+            if (val == "")
+            {
+                val = null;
+                throw new Exception("Field cannot be blank, Sport Centre Code");
+
+            }
+
+
+            return val;
+        }
+
+        
+        
 
     }
 }

@@ -5,17 +5,17 @@ namespace BusinessLayer
     class Sms : Message
     {
         private readonly string _messageType;
-        private string _messageID, _sender, _messageText, _subject,_body;
+        private string _messageID, _sender, _subject,_body;
 
-        public Sms(string messageID, string sender, string messageText, string subject, string body)
+        public Sms(string messageID, string sender, string subject, string body)
         {
             _messageType = "SMS";
             _messageID = messageID;
             _sender = sender;
-            _messageText = messageText;
             _subject = null;
             _body = body;
         }
+        
 
         public override string MessageType
         {
@@ -37,11 +37,8 @@ namespace BusinessLayer
 
             
         }
-        public override string MessageText
-        {
-            get { return _messageText; }
-            set { _messageText = value; }
-        }
+       
+        
         public override string Subject
         {
             get { return _subject; }

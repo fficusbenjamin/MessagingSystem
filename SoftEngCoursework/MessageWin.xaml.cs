@@ -71,7 +71,6 @@ namespace SoftEngCoursework
         }
         private string getTrdLine()
         {
-            //string[] line = System.Text.RegularExpressions.Regex.Split(_bdyTxt.Text, "\r\n|\r|\n");
             string[] line = _bdyTxt.Text.Split(new string[] { "\r\n" }, 3, StringSplitOptions.None); 
             return line[2];
         }
@@ -225,7 +224,7 @@ namespace SoftEngCoursework
                 addMessage();                
                 string output = JsonConvert.SerializeObject(_sendMessage.messageList);
                 _lstAllMessages.Items.Clear();
-                showList(_sendMessage.messageList);
+                showList(sendMessage.messageList);
 
             }
         }
@@ -235,9 +234,10 @@ namespace SoftEngCoursework
             foreach (Message message in sendMessage.messageList) 
             {
                 _lstAllMessages.Items.Add(message.ID+ " " + message.MessageType /*+ " " + message.Sender +" "+ message.Subject +" "+ message.Body*/);
+
             }
 
-  
+
         }
 
         private void _lstAllMessages_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
@@ -262,7 +262,7 @@ namespace SoftEngCoursework
             }
         }
 
-        private void wrtJson(Message message, MessageList messageList) 
+        private void wrtJson(Message mess, MessageList messageList) 
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
@@ -275,7 +275,7 @@ namespace SoftEngCoursework
             }
             string jSon = File.ReadAllText(fPth);            
             messageList = JsonConvert.DeserializeObject<MessageList>(jSon, settings);
-            messageList.add(message);
+            messageList.add(mess);
             var convJson = JsonConvert.SerializeObject(sendMessage, Formatting.Indented, settings);
             File.WriteAllText(fPth,convJson);
         }

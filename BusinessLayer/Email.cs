@@ -5,21 +5,23 @@ namespace BusinessLayer
     class Email : Message
     {
         private readonly string _messageType;
-        private string _messageID, _sender, _messageText, _subject,_body;
+        private string _messageID, _sender, _subject,_body;
         
 
 
-        public Email(string messageID, string sender, string messageText, string subject, string body)
+        public Email(string messageID, string sender, string subject, string body)
         {
             _messageType = "Email";
             _messageID = messageID;
-            _messageText = messageText;
             _sender = sender;
             _subject = subject;
             _body = body;
         }
 
-        public Email() { }
+        public Email() 
+        {
+            _messageType = "Email";
+        }
 
         
 
@@ -33,11 +35,6 @@ namespace BusinessLayer
             set { _messageID = value; }
         }
 
-        public override string MessageText
-        {
-            get { return _messageText; }
-            set {_messageText = value; }
-        }
 
 
         
@@ -58,7 +55,7 @@ namespace BusinessLayer
             get { return _subject; }
             set 
             {
-                
+                valSub(value);
                 _subject = value;
 
             }     
@@ -88,6 +85,25 @@ namespace BusinessLayer
                     
                 }                            
             return val;
+        }
+
+        public string valSub(string val) 
+        {
+            if (val == "")
+            {
+                val = null;
+                throw new Exception("Field cannot be blank, subject");
+
+            }
+
+            if (val.Length > 20)
+            {
+                val = null;
+                throw new Exception("Subject is too long");
+
+            }
+            return val;
+
         }
 
         

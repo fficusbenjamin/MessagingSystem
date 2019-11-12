@@ -5,14 +5,13 @@ namespace BusinessLayer
     class Tweet : Message
     {
         private readonly string _messageType;
-        private string _messageID, _sender, _messageText, _subject,_body;
+        private string _messageID, _sender, _subject,_body;
 
-        public Tweet(string messageID, string sender, string messageText, string subject, string body)
+        public Tweet(string messageID, string sender, string subject, string body)
         {
             _messageType = "Tweet";
             _messageID = messageID;
-            _sender = sender;
-            _messageText = messageText;
+            _sender = sender;          
             _subject = subject;
             _body = body;
         }
@@ -35,11 +34,7 @@ namespace BusinessLayer
                 _sender = value; 
             }
         }
-        public override string MessageText
-        {
-            get { return _messageText; }
-            set { _messageText = value; }
-        }
+        
         public override string Subject
         {
             get { return _subject; }

@@ -1,6 +1,5 @@
 {
   "$type": "DB.MessageList, DB",
-  "line": "",
   "messageList": {
     "$type": "System.Collections.Generic.List`1[[BusinessLayer.Message, BusinessLayer]], mscorlib",
     "$values": [
@@ -9,54 +8,40 @@
         "MessageType": "SMS",
         "ID": "S748372497",
         "Sender": "+4476849375",
-        "MessageText": null,
         "Subject": null,
         "Body": "Hey man how you doing? LOL"
       },
       {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "MessageType": null,
-        "ID": "E123456789",
-        "MessageText": null,
-        "Sender": "gigifhgyt@rivag.com",
-        "Subject": "Complimenti!",
-        "Body": "come stai? tutto bene?"
-      },
-      {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "MessageType": null,
-        "ID": "E345234565",
-        "MessageText": null,
-        "Sender": "gigity@rivatiyu.com",
-        "Subject": "AMICO MIO!",
-        "Body": "come va tutto bene?"
-      },
-      {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "MessageType": null,
-        "ID": "E987654321",
-        "MessageText": null,
-        "Sender": "gigighjt@gmail.com",
-        "Subject": "AMICO MIO CARISSIMO!",
-        "Body": "COME STAI?"
-      },
-      {
         "$type": "BusinessLayer.Tweet, BusinessLayer",
         "MessageType": "Tweet",
-        "ID": "T784738274",
+        "ID": "T123456789",
         "Sender": "@gigiott",
-        "MessageText": null,
         "Subject": null,
-        "Body": "fdshfs\r\nfdsfsdf\r\nsfsdfsd"
+        "Body": "cartofero amico mio?\r\nsi?\r\nF?\r\nl'amore!"
       },
       {
         "$type": "BusinessLayer.Email, BusinessLayer",
         "MessageType": "Email",
-        "ID": "E374923704",
-        "MessageText": null,
-        "Sender": "gigigi@thgrgge.com",
-        "Subject": "fhidfsdhfs",
-        "Body": "fdsfsdfdsgsgsg\r\ngfdgsfdgfsg\r\nfgfdsgfdsg"
+        "ID": "E758457353",
+        "Sender": "gigiott@gmail.com",
+        "Subject": "cartomimo",
+        "Body": "di praio a moarofsda"
+      },
+      {
+        "$type": "BusinessLayer.Email, BusinessLayer",
+        "MessageType": "Email",
+        "ID": "E478324792",
+        "Sender": "gigiott@gmail.com",
+        "Subject": "SIR 04/14/1986",
+        "Body": "09-098-98\r\nRaid\r\nfhdusfosf"
+      },
+      {
+        "$type": "BusinessLayer.Email, BusinessLayer",
+        "MessageType": "Email",
+        "ID": "E478324792",
+        "Sender": "gigiott@gmail.com",
+        "Subject": "SIR 04/14/1986",
+        "Body": "09-098-98\r\nRaid\r\nfhdusfosf"
       }
     ]
   }

@@ -1,10 +1,7 @@
 # SoftEngCoursework
- 
-
-
 SMS:
 	
-	text = 140 char max
+	
 	abbreviation = check from the csv
 
 EMAIL: 
@@ -18,9 +15,6 @@ TWEETS:
 	hashtags = #
 	
 in another WPF show those
-
-SIR list
-	a kind of mail
 
 Mention list
 	every tweet that has an @ in front in the body not the handle
