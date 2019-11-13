@@ -48,13 +48,22 @@ namespace BusinessLayer
         public override string Body
         {
             get { return _body; }
-            set { _body = value; }
+            set 
+            {
+                //valBd(value);
+                _body = valBd(value); 
+            }
         }
+        
+        
+        
+        
+        
+        Regex rTwtHnd = new Regex(@"[@][a-zA-z0-9]{0,15}");
 
         public string valSender(string val)
         {
             
-            Regex rTwtHnd = new Regex(@"[@][a-zA-z0-9]{0,15}");
             if (val == "")
             {
                 val = null;
@@ -86,7 +95,14 @@ namespace BusinessLayer
 
 
             }
-            string[] msgSplit = val.Split(' ');
+            
+            Regex rSplit = new Regex(@"[\d\s]");
+            
+
+            string[] msgSplit = rSplit.Split(val);
+            
+            
+            
 
             foreach (var entry in textspeak)
             {
@@ -102,15 +118,17 @@ namespace BusinessLayer
             }
 
             //Get mentions
-            for (int i = 0; i < val.Length; i++)
+            for (int i = 0; i < msgSplit.Length; i++)
             {
-                if (msgSplit[i][0] == '@')
+                if (rTwtHnd.IsMatch(msgSplit[i]))
                 {
                     mntsList.Add(msgSplit[i]);
                 }
             }
             File.AppendAllLines(@"..\..\..\..\SoftEngCoursework\hashtags.txt", tagList);
             File.AppendAllLines(@"..\..\..\..\SoftEngCoursework\mentions.txt", mntsList);
+
+            
 
             return val;
         }

@@ -13,6 +13,14 @@
       },
       {
         "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "tagList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": []
+        },
+        "mntsList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": []
+        },
         "MessageType": "Tweet",
         "ID": "T123456789",
         "Sender": "@gigiott",
@@ -34,6 +42,103 @@
         "Sender": "gigiott@gmail.com",
         "Subject": "SIR 04/14/1986",
         "Body": "09-098-98\r\nRaid\r\nfhdusfosf"
+      },
+      {
+        "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "tagList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "LOL\r\n@carlo\r\n#cacca"
+          ]
+        },
+        "mntsList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": []
+        },
+        "MessageType": "Tweet",
+        "ID": "T578347583",
+        "Sender": "@gigiott",
+        "Subject": null,
+        "Body": "hey Man! LOL\r\n@carlo\r\n#cacca"
+      },
+      {
+        "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "tagList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "LOL\r\n@pedo\r\n#cunt"
+          ]
+        },
+        "mntsList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": []
+        },
+        "MessageType": "Tweet",
+        "ID": "T578435754",
+        "Sender": "@carlott",
+        "Subject": null,
+        "Body": "Hey shit! LOL\r\n@pedo\r\n#cunt"
+      },
+      {
+        "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "tagList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "#gigiott"
+          ]
+        },
+        "mntsList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "@dave"
+          ]
+        },
+        "MessageType": "Tweet",
+        "ID": "T748375742",
+        "Sender": "@aaron",
+        "Subject": null,
+        "Body": "hey man! LOL\r\n@dave\r\n#gigiott"
+      },
+      {
+        "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "tagList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "#cunt"
+          ]
+        },
+        "mntsList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "@dave"
+          ]
+        },
+        "MessageType": "Tweet",
+        "ID": "T578437573",
+        "Sender": "@aaron",
+        "Subject": null,
+        "Body": "fhjdsfjsf LOL\r\n@dave\r\n#cunt"
+      },
+      {
+        "$type": "BusinessLayer.Tweet, BusinessLayer",
+        "tagList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "#pizza",
+            "#macbbok"
+          ]
+        },
+        "mntsList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "@francesco"
+          ]
+        },
+        "MessageType": "Tweet",
+        "ID": "T748327492",
+        "Sender": "@aaron",
+        "Subject": null,
+        "Body": "yo dawg LOL <Laughing out loud>\r\n@francesco\r\n#pizza #macbbok"
       }
     ]
   }
