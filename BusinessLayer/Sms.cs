@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.IO;
 
 namespace BusinessLayer
 {
@@ -47,9 +50,11 @@ namespace BusinessLayer
         public override string Body
         {
             get { return _body; }
-            set {
-                valBd(value);
-                _body = value; }
+            set 
+            {
+                //valBd(value);
+                _body = valBd(value); 
+            }
         }
 
 
@@ -86,6 +91,26 @@ namespace BusinessLayer
                 throw new Exception("Text cannot be longer than 140 characters");
 
             }
+
+            Dictionary<string, string> textspeak = new Dictionary<string, string>();
+
+            foreach (string line in File.ReadAllLines(@"..\..\..\..\SoftEngCoursework\textwords.csv"))
+            {
+                string[] keyvalue = line.Split(',');
+                if (keyvalue.Length == 2)
+                {
+                    textspeak.Add(keyvalue[0], keyvalue[1]);
+                }
+            }
+
+            Regex rSplit = new Regex(@"[\d\s]");
+            string[] msgSplit = rSplit.Split(val);
+
+            foreach (var entry in textspeak)
+            {
+                val = val.Replace(entry.Key, entry.Key + " <" + entry.Value + ">");
+            }
+            
             return val;
         }
     }

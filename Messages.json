@@ -139,6 +139,22 @@
         "Sender": "@aaron",
         "Subject": null,
         "Body": "yo dawg LOL <Laughing out loud>\r\n@francesco\r\n#pizza #macbbok"
+      },
+      {
+        "$type": "BusinessLayer.Sms, BusinessLayer",
+        "MessageType": "SMS",
+        "ID": "S589385082",
+        "Sender": "+4457584935",
+        "Subject": null,
+        "Body": "Hey man LMAO"
+      },
+      {
+        "$type": "BusinessLayer.Sms, BusinessLayer",
+        "MessageType": "SMS",
+        "ID": "S438492840",
+        "Sender": "+44586739544",
+        "Subject": null,
+        "Body": "Hey dude LMAO <Laughing my a** off>"
       }
     ]
   }
