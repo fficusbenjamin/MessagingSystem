@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="MessageDetail" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="_bckBtn" Content="Back" HorizontalAlignment="Left" Margin="707,377,0,0" VerticalAlignment="Top" Width="75" Click="_bckBtn_Click"/>
+
     </Grid>
 </Window>

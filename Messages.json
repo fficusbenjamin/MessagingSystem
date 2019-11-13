@@ -34,14 +34,6 @@
         "Sender": "gigiott@gmail.com",
         "Subject": "SIR 04/14/1986",
         "Body": "09-098-98\r\nRaid\r\nfhdusfosf"
-      },
-      {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "MessageType": "Email",
-        "ID": "E478324792",
-        "Sender": "gigiott@gmail.com",
-        "Subject": "SIR 04/14/1986",
-        "Body": "09-098-98\r\nRaid\r\nfhdusfosf"
       }
     ]
   }

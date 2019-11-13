@@ -262,6 +262,13 @@ namespace SoftEngCoursework
             }
         }
 
+        private void _fnshBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDetail newWin = new MessageDetail();
+            newWin.Show();
+            this.Close();
+        }
+
         private void wrtJson(Message mess, MessageList messageList) 
         {
             JsonSerializerSettings settings = new JsonSerializerSettings

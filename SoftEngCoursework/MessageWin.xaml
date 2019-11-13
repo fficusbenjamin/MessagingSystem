@@ -24,7 +24,7 @@
         <Label x:Name="_hdrLbl" Content="Message Header:" HorizontalAlignment="Left" Margin="475,50,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="_dsplBd" HorizontalAlignment="Left" Height="150" Margin="583,0,0,164.667" TextWrapping="Wrap" Width="200" IsReadOnly="True" VerticalAlignment="Bottom"/>
         <Label x:Name="_hdrBd" Content="Message Body:" HorizontalAlignment="Left" Margin="475,89,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="_fnshBtn" Content="End Session" HorizontalAlignment="Left" Margin="10,367,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button x:Name="_fnshBtn" Content="End Session" HorizontalAlignment="Left" Margin="10,367,0,0" VerticalAlignment="Top" Width="200" Click="_fnshBtn_Click"/>
 
     </Grid>
 </Window>

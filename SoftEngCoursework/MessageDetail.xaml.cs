@@ -23,5 +23,12 @@ namespace SoftEngCoursework
         {
             InitializeComponent();
         }
+
+        private void _bckBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MessageWin newWin = new MessageWin();
+            newWin.Show();
+            this.Close();
+        }
     }
 }
