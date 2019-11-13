@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BusinessLayer;
+using DB;
 
 namespace SoftEngCoursework
 {
@@ -30,5 +33,63 @@ namespace SoftEngCoursework
             newWin.Show();
             this.Close();
         }
+
+        private void _lstMnts_Loaded(object sender, RoutedEventArgs e)
+        {
+            showMnts();
+        }
+
+        private void _lstHstgs_Loaded(object sender, RoutedEventArgs e)
+        {
+            showHtgs();
+        }
+
+        private void _lstSir_Loaded(object sender, RoutedEventArgs e)
+        {
+            showSir();
+        }
+
+
+        private void showMnts()
+        {
+            List<string> mentionsList = File.ReadAllLines(@"..\..\..\..\SoftEngCoursework\mentions.txt").ToList();
+            foreach (var mentions in mentionsList) 
+            {
+                _lstMnts.Items.Add(mentions);
+            }
+
+        }
+
+        private void showHtgs()
+        {
+            List<string> hashtagsList = File.ReadAllLines(@"..\..\..\..\SoftEngCoursework\hashtags.txt").ToList();
+            /*foreach (var hashtag in hashtagsList)
+            {
+                _lstHstgs.Items.Add(hashtag);
+            }*/
+
+            var wrdCount = hashtagsList.GroupBy(i => i).OrderByDescending(group => group.Count());
+            foreach (var word in wrdCount) 
+            {
+                _lstHstgs.Items.Add(word.Key+"("+word.Count()+")");
+            }
+
+        }
+
+        private void showSir() 
+        {
+            List<string> sirList = File.ReadAllLines(@"..\..\..\..\SoftEngCoursework\sirlist.txt").ToList();
+            foreach (var sirs in sirList)
+            {
+                _lstSir.Items.Add(sirs);
+            }
+
+        }
+
+
+
+
+
+
     }
 }

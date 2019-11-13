@@ -9,7 +9,8 @@ namespace BusinessLayer
     {
         private readonly string _messageType;
         private string _messageID, _sender, _subject,_body;
-        
+        public List<string> qrntList = new List<string>();
+
 
 
         public Email(string messageID, string sender, string subject, string body)
@@ -67,8 +68,8 @@ namespace BusinessLayer
         {
             get { return _body; }
             set {
-                valBd(value);
-                _body = value; }
+                //valBd(value);
+                _body = valBd(value); }
         }
 
 
@@ -126,6 +127,21 @@ namespace BusinessLayer
                 val = null;
                 throw new Exception("Email cannot be longer than 1028 characters");
 
+            }
+
+
+            Regex rUrl = new Regex(@"^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$");
+            Regex rSplit = new Regex(@"[\d\s]");
+            string[] msgSplit = rSplit.Split(val);
+
+            foreach (string entry in msgSplit)
+            {
+                if (rUrl.IsMatch(entry)) 
+                {
+                    qrntList.Add(entry);
+                    val = val.Replace(entry,"<URL Quarantined>");
+                }
+                
             }
             return val;
         }

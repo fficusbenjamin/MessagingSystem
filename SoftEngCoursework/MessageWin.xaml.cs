@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using BusinessLayer;
+using System.Text.RegularExpressions;
 
 namespace SoftEngCoursework
 {
@@ -17,6 +18,8 @@ namespace SoftEngCoursework
         public static MessageList _sendMessage { get { return sendMessage; } }
         private string idInput, bodyInput, typeInput, typeChoice;
         private bool isEntryValid;
+        Regex rSir = new Regex(@"SIR ([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}");
+
         string fPth = @"..\..\..\..\SoftEngCoursework\Messages.json";
 
         public MessageWin()
@@ -30,7 +33,7 @@ namespace SoftEngCoursework
 
         private void validateEntry()
         {
-            System.Text.RegularExpressions.Regex rID = new System.Text.RegularExpressions.Regex(@"^[SET][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]");
+            Regex rID = new Regex(@"^[SET][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]");
 
             try
             {
@@ -80,6 +83,8 @@ namespace SoftEngCoursework
         {
             try
             {
+
+                bool swtch = false;
                 MessageFactory factory = null;
                 MessageFactory sFact = null;
                 switch (typeChoice)
@@ -88,8 +93,16 @@ namespace SoftEngCoursework
                         factory = new SmsFactory(typeChoice);
                         break;
                     case "E":
-                        factory = new EmailFactory(typeChoice);
-                        sFact = new SirFactory(typeChoice);
+                        if (!rSir.IsMatch(getScndLine()))
+                        {
+                            factory = new EmailFactory(typeChoice);
+                        }
+                        else
+                        {
+                            sFact = new SirFactory(typeChoice);
+                            swtch = true;
+                        }
+
                         break;
                     case "T":
                         factory = new TweetFactory(typeChoice);
@@ -97,20 +110,12 @@ namespace SoftEngCoursework
                     default:
                         break;
                 }
-                Message message = factory.GetMessageType();
-
-                
-                
-                if (typeChoice == "E") 
+                if (swtch == true)
                 {
-                    System.Text.RegularExpressions.Regex rSir = new System.Text.RegularExpressions.Regex(@"SIR ([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}");
-                    string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
-
-
+                    Message sir = sFact.GetMessageType();
                     if (rSir.IsMatch(getScndLine()))
                     {
-                        Message sir = sFact.GetMessageType();
-
+                        string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
                         sir.ID = idInput;
                         sir.Sender = line1;
                         sir.Subject = getScndLine();
@@ -121,8 +126,19 @@ namespace SoftEngCoursework
                         _dsplHdr.Text = sir.ID;
                         _dsplBd.Text = sir.Subject + "\n" + sir.Body;
                     }
-                    else 
+                }
+                else if (swtch == false)
+                {
+
+                    Message message = factory.GetMessageType();
+                    if (typeChoice == "E")
                     {
+                        //Regex rSir = new Regex(@"SIR ([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}");
+                        string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
+
+
+
+
 
                         message.ID = idInput;
                         message.Sender = line1;
@@ -132,47 +148,51 @@ namespace SoftEngCoursework
                         wrtJson(message, sendMessage);
                         _dsplType.Text = message.MessageType;
                         _dsplHdr.Text = message.ID;
+                        _dsplBd.Text = message.Subject + "\n" + message.Body;
+
+
+                    }
+                    if (typeChoice == "S")
+                    {
+                        message.ID = idInput;
+                        string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
+                        message.Sender = line1;
+                        message.Body = spltTwo();
+                        sendMessage.add(message);
+                        wrtJson(message, sendMessage);
+                        _dsplType.Text = message.MessageType;
+                        _dsplHdr.Text = message.ID;
+                        _dsplBd.Text = message.Body;
+                    }
+                    if (typeChoice == "T")
+                    {
+                        message.ID = idInput;
+                        string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
+                        message.Sender = line1;
+                        message.Body = spltTwo();
+                        sendMessage.add(message);
+                        wrtJson(message, sendMessage);
+                        _dsplType.Text = message.MessageType;
+                        _dsplHdr.Text = message.ID;
                         _dsplBd.Text = message.Body;
                     }
 
                 }
-                if (typeChoice == "S")
-                {
-                    message.ID = idInput;
-                    string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
-                    message.Sender = line1;
-                    message.Body = spltTwo();
-                    sendMessage.add(message);
-                    wrtJson(message, sendMessage);
-                    _dsplType.Text = message.MessageType;
-                    _dsplHdr.Text = message.ID;
-                    _dsplBd.Text = message.Body;
-                }
-                if (typeChoice == "T")
-                {
-                    message.ID = idInput;
-                    string line1 = _bdyTxt.Text.Substring(0, _bdyTxt.Text.IndexOf(Environment.NewLine));
-                    message.Sender = line1;
-                    message.Body = spltTwo();
-                    sendMessage.add(message);
-                    wrtJson(message, sendMessage);
-                    _dsplType.Text = message.MessageType;
-                    _dsplHdr.Text = message.ID;
-                    _dsplBd.Text = message.Body;
-                }
-
-
-
             }
-            catch(Exception diagBox)
+
+            catch (Exception message)
             {
-                MessageBox.Show(diagBox.Message);
+                MessageBox.Show(message.Message);
+            }
+
+                
             }
             
             
             
             
-        }
+            
+        
 
         
 
@@ -234,22 +254,28 @@ namespace SoftEngCoursework
             foreach (Message message in sendMessage.messageList) 
             {
                 _lstAllMessages.Items.Add(message.ID+ " " + message.MessageType /*+ " " + message.Sender +" "+ message.Subject +" "+ message.Body*/);
-
+                
             }
+            
 
 
         }
 
         private void _lstAllMessages_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-            string selMsg = _lstAllMessages.SelectedItem.ToString();
-            string selId = selMsg.Substring(0, 10);
-            
-            Message message = find(selId);
-            
-            _dsplHdr.Text = selId;
-            _dsplType.Text = message.MessageType;
-            _dsplBd.Text = message.Sender +"\n"+ message.Subject +"\n"+ message.Body;
+            try
+            {
+                string selMsg = _lstAllMessages.SelectedItem.ToString();
+                string selId = selMsg.Substring(0, 10);
+
+                Message message = find(selId);
+                
+
+                _dsplHdr.Text = selId;
+                _dsplType.Text = message.MessageType;
+                _dsplBd.Text = message.Sender + "\n" + message.Subject + "\n" + message.Body;
+            }
+            catch { }
         }
 
         private void addBx(List<Message> list) 
@@ -311,6 +337,7 @@ namespace SoftEngCoursework
                     return m;
                 }
             }
+            
             return null;
         }
 

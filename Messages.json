@@ -29,6 +29,10 @@
       },
       {
         "$type": "BusinessLayer.Email, BusinessLayer",
+        "qrntList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": []
+        },
         "MessageType": "Email",
         "ID": "E758457353",
         "Sender": "gigiott@gmail.com",
@@ -37,6 +41,10 @@
       },
       {
         "$type": "BusinessLayer.Email, BusinessLayer",
+        "qrntList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": []
+        },
         "MessageType": "Email",
         "ID": "E478324792",
         "Sender": "gigiott@gmail.com",
@@ -155,6 +163,58 @@
         "Sender": "+44586739544",
         "Subject": null,
         "Body": "Hey dude LMAO <Laughing my a** off>"
+      },
+      {
+        "$type": "BusinessLayer.Email, BusinessLayer",
+        "qrntList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "www.google.com"
+          ]
+        },
+        "MessageType": "Email",
+        "ID": "E489394723",
+        "Sender": "gigi@gmail.com",
+        "Subject": "Buongiorno!",
+        "Body": "come stai? <URL Quarantined>"
+      },
+      {
+        "$type": "BusinessLayer.Email, BusinessLayer",
+        "qrntList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": [
+            "www.google.com"
+          ]
+        },
+        "MessageType": "Email",
+        "ID": "E473827455",
+        "Sender": "gigi@gmail.com",
+        "Subject": "amico mio",
+        "Body": "come stai amico mio?\r\n<URL Quarantined>"
+      },
+      {
+        "$type": "BusinessLayer.Email, BusinessLayer",
+        "qrntList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": []
+        },
+        "MessageType": "Email",
+        "ID": "E111111111",
+        "Sender": "aaaaaa@aaaa.com",
+        "Subject": "SIR 09/09/09",
+        "Body": "66-666-66\r\nRaid\r\nbod"
+      },
+      {
+        "$type": "BusinessLayer.Sir, BusinessLayer",
+        "sirList": {
+          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
+          "$values": []
+        },
+        "MessageType": "Email",
+        "ID": "E111111111",
+        "Sender": "fuck@fuck.com",
+        "Subject": "SIR 09/09/2009",
+        "Body": "66-666-66\r\nRaid\r\nfhfh"
       }
     ]
   }

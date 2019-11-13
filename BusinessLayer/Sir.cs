@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace BusinessLayer
 {
    class Sir : Message
     {
         private readonly string _messageType;
+        public List<string> sirList = new List<string>();
+
 
         private string _messageID, _sender, _subject, _body;
         public Sir(string messageID, string sender, string subject, string body)
@@ -48,12 +49,14 @@ namespace BusinessLayer
         public override string Body
         {
             get { return _body; }
-            set {
-                valBd(value);
-                _body = value; }
+            set
+            {
+                _body = value;
+                _body = valBd(value);
+            }
         }
 
-        
+
         public string valSubj(string val)
         {
 
@@ -76,7 +79,7 @@ namespace BusinessLayer
         }
         public string valSender(string val)
         {
-            System.Text.RegularExpressions.Regex rEmail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
+            Regex rEmail = new Regex(@"^[a-zA-Z][\w\.-]{2,28}[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
             if (val == "")
             {
                 val = null;
@@ -105,7 +108,7 @@ namespace BusinessLayer
 
         public string valBd(string val) 
         {
-            System.Text.RegularExpressions.Regex rCode = new System.Text.RegularExpressions.Regex(@"[0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9]");
+            Regex rCode = new Regex(@"[0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9]");
             List<string> NatInc = new List<string>();
             NatInc.Add("Theft of Properties");
             NatInc.Add("Staff Attack");
@@ -117,14 +120,19 @@ namespace BusinessLayer
             NatInc.Add("Terrorism");
             NatInc.Add("Sport Injury");
             NatInc.Add("Personal Info Leak");
-
+            string line = getScdLine();
+            bool test = false;
             foreach (string inc in NatInc )
             {
-                if (getScdLine() != inc) 
+                if (line == inc) 
                 {
-                    val = null;
-                    throw new Exception("Field is not a valid Incident");
+                    test = false;
                 }
+            }
+
+            if (test == true)
+            {
+                throw new Exception("Not a valid incident.");
             }
 
 
@@ -139,6 +147,9 @@ namespace BusinessLayer
                 throw new Exception("Field cannot be blank, Sport Centre Code");
 
             }
+            string sirItem = getFrstLine() + ", " + getScdLine();
+            File.AppendAllText(@"..\..\..\..\SoftEngCoursework\sirlist.txt", sirItem);
+
 
 
             return val;

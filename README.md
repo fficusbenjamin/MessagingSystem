@@ -1,16 +1,5 @@
 # SoftEngCoursework
-SMS:
-	
-	
-	abbreviation = check from the csv
 
-EMAIL: 
-	
-	
-	may contain hypertext, quarantine file
-
-
-	
 in another WPF show those
 
 Mention list
@@ -23,3 +12,8 @@ sir list
 
 
 open the file dialog csv file
+
+
+
+
+
