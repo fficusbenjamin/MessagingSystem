@@ -14,9 +14,13 @@ namespace SoftEngCoursework
     /// </summary>
     public partial class MessageWin : Window
     {
-        private static MessageList sendMessage = new MessageList();
-        public static MessageList _sendMessage { get { return sendMessage; } }
-        private string idInput, bodyInput, typeInput, typeChoice;
+        public static MessageList sendMessage = new MessageList();
+        public static MessageList _sendMessage 
+        { 
+            get { return sendMessage; }
+            //set { return value; }
+        }
+        public string idInput, bodyInput, typeInput, typeChoice;
         private bool isEntryValid;
         Regex rSir = new Regex(@"SIR ([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}");
 
@@ -69,7 +73,7 @@ namespace SoftEngCoursework
         
         private string getScndLine()
         {
-            string[] line = System.Text.RegularExpressions.Regex.Split(_bdyTxt.Text, "\r\n|\r|\n");
+            string[] line = Regex.Split(_bdyTxt.Text, "\r\n|\r|\n");
             return line[1];
         }
         private string getTrdLine()
@@ -295,7 +299,7 @@ namespace SoftEngCoursework
             this.Close();
         }
 
-        private void wrtJson(Message mess, MessageList messageList) 
+        public void wrtJson(Message mess, MessageList messageList) 
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             {

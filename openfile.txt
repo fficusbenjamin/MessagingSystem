@@ -1,4 +1,4 @@
-Email,E123456789,fficusbenjamin@gmail.com,Help!,Please friend help me!
-Tweet,T987654321,@fficusbenjamin,Hey dude/r/n#test
-SMS,S123456789,+445678895433,I love you darling/r/nLOL
-Email,E987654321,fficusbenjamin@gmail.com,SIR 14/04/1986,09-098-09/r/nRaid/r/nBodyTest
+E,E123456789,fficusbenjamin@gmail.com,Help!,Please friend help me!
+T,T987654321,@fficusbenjamin,Hey dude,#test
+S,S123456789,+445678895433,I love you darling,LOL
+E,E987654321,fficusbenjamin@gmail.com,SIR 14/04/1986,09-098-09,Raid,BodyTest
