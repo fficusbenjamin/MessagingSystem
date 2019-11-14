@@ -35,15 +35,22 @@ namespace SoftEngCoursework
 
         private void file_btn_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if (openFileDialog.ShowDialog() == true)
+            try
             {
-                string path = openFileDialog.FileName;
-                rdFile(path);
-                MessageWin newWin = new MessageWin();
-                newWin.Show();
-                this.Close();
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    string path = openFileDialog.FileName;
+                    rdFile(path);
+                    MessageWin newWin = new MessageWin();
+                    newWin.Show();
+                    this.Close();
 
+                }
+            }
+            catch (Exception message) 
+            { 
+                MessageBox.Show("File not valid "); 
             }
         }
 
@@ -51,118 +58,121 @@ namespace SoftEngCoursework
         private void rdFile(string path)
         {
 
+            
+            
+                string line;
+                StreamReader stringReader = new StreamReader(path);
+                while ((line = stringReader.ReadLine()) != null)
+                {
+                    string[] vs = line.Split(',');
+                    /* string getScndLine()
+                     {
+                         string[] line = Regex.Split(vs[1], "\r\n|\r|\n");
+                         return line[2];
+                     }
+                     string getTrdLine()
+                     {
+                         string[] line = vs[1].Split(new string[] { "\r\n" }, 3, StringSplitOptions.None);
+                         return line[2];
+                     }
+                     string spltTwo()
+                     {
+                         string[] line = vs[1].Split(new string[] { "\r\n" }, 2, StringSplitOptions.None);
+                         return line[1];
+                     }*/
 
-            string line;
-            StreamReader stringReader = new StreamReader(path);
-            while ((line = stringReader.ReadLine()) != null)
-            {
-                string[] vs = line.Split(',');
-               /* string getScndLine()
-                {
-                    string[] line = Regex.Split(vs[1], "\r\n|\r|\n");
-                    return line[2];
-                }
-                string getTrdLine()
-                {
-                    string[] line = vs[1].Split(new string[] { "\r\n" }, 3, StringSplitOptions.None);
-                    return line[2];
-                }
-                string spltTwo()
-                {
-                    string[] line = vs[1].Split(new string[] { "\r\n" }, 2, StringSplitOptions.None);
-                    return line[1];
-                }*/
+                    bool swtch = false;
+                    MessageFactory factory = null;
+                    MessageFactory sFact = null;
+                    switch (vs[0])
+                    {
+                        case "S":
+                            factory = new SmsFactory(vs[0]);
+                            break;
+                        case "E":
+                            if (!rSir.IsMatch(vs[3]))
+                            {
+                                factory = new EmailFactory(vs[0]);
+                            }
+                            else
+                            {
+                                sFact = new SirFactory(vs[0]);
+                                swtch = true;
+                            }
 
-                bool swtch = false;
-                MessageFactory factory = null;
-                MessageFactory sFact = null;
-                switch (vs[0])
-                {
-                    case "S":
-                        factory = new SmsFactory(vs[0]);
-                        break;
-                    case "E":
-                        if (!rSir.IsMatch(vs[3]))
+                            break;
+                        case "T":
+                            factory = new TweetFactory(vs[0]);
+                            break;
+                        default:
+                            break;
+                    }
+                    if (swtch == true)
+                    {
+                        Message sir = sFact.GetMessageType();
+                        if (rSir.IsMatch(vs[3]))
                         {
-                            factory = new EmailFactory(vs[0]);
+                            //string line1 = vs[2].Substring(0, vs[2].IndexOf(Environment.NewLine));
+                            sir.ID = vs[1];
+                            sir.Sender = vs[2];
+                            sir.Subject = vs[3];
+                            string conc = vs[4] + "\r\n " + vs[5] + "\r\n " + vs[6];
+                            sir.Body = conc;
+                            MessageWin.sendMessage.add(sir);
+                            wrtJson(sir, MessageWin.sendMessage);
+
                         }
-                        else
+                    }
+                    else if (swtch == false)
+                    {
+
+                        Message message = factory.GetMessageType();
+                        if (vs[0] == "E")
                         {
-                            sFact = new SirFactory(vs[0]);
-                            swtch = true;
+                            //Regex rSir = new Regex(@"SIR ([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}");
+                            //string line1 = vs[2].Substring(0, vs[2].IndexOf(Environment.NewLine));
+
+
+
+
+
+                            message.ID = vs[1];
+                            message.Sender = vs[2];
+                            message.Subject = vs[3];
+                            //string conc = vs[4] + " " + vs[5];
+                            message.Body = vs[4];
+                            MessageWin.sendMessage.add(message);
+                            wrtJson(message, MessageWin.sendMessage);
+
+
+
                         }
+                        if (vs[0] == "S")
+                        {
+                            message.ID = vs[1];
+                            //string line1 = vs[2].Substring(0, vs[2].IndexOf(Environment.NewLine));
+                            message.Sender = vs[2];
+                            //string conc = vs[4] + " " + vs[5];
+                            message.Body = vs[3];
+                            MessageWin.sendMessage.add(message);
+                            wrtJson(message, MessageWin.sendMessage);
 
-                        break;
-                    case "T":
-                        factory = new TweetFactory(vs[0]);
-                        break;
-                    default:
-                        break;
-                }
-                if (swtch == true)
-                {
-                    Message sir = sFact.GetMessageType();
-                    if (rSir.IsMatch(vs[3]))
-                    {
-                        //string line1 = vs[2].Substring(0, vs[2].IndexOf(Environment.NewLine));
-                        sir.ID = vs[1];
-                        sir.Sender = vs[2];
-                        sir.Subject = vs[3];
-                        string conc = vs[4]+"\r\n "+vs[5]+"\r\n "+vs[6];
-                        sir.Body = conc;
-                        MessageWin.sendMessage.add(sir);
-                        wrtJson(sir, MessageWin.sendMessage);
+                        }
+                        if (vs[0] == "T")
+                        {
+                            message.ID = vs[1];
+                            //string line1 = vs[2].Substring(0, vs[2].IndexOf(Environment.NewLine));
+                            message.Sender = vs[2];
+                            //string conc = vs[4] + " " + vs[5];
+                            message.Body = vs[3];
+                            MessageWin.sendMessage.add(message);
+                            wrtJson(message, MessageWin.sendMessage);
 
+                        }
                     }
                 }
-                else if (swtch == false)
-                {
-
-                    Message message = factory.GetMessageType();
-                    if (vs[0] == "E")
-                    {
-                        //Regex rSir = new Regex(@"SIR ([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}");
-                        //string line1 = vs[2].Substring(0, vs[2].IndexOf(Environment.NewLine));
-
-
-
-
-
-                        message.ID = vs[1];
-                        message.Sender = vs[2];
-                        message.Subject = vs[3];
-                        //string conc = vs[4] + " " + vs[5];
-                        message.Body = vs[4];
-                        MessageWin.sendMessage.add(message);
-                        wrtJson(message, MessageWin.sendMessage);
-
-
-
-                    }
-                    if (vs[0] == "S")
-                    {
-                        message.ID = vs[1];
-                        //string line1 = vs[2].Substring(0, vs[2].IndexOf(Environment.NewLine));
-                        message.Sender = vs[2];
-                        //string conc = vs[4] + " " + vs[5];
-                        message.Body = vs[3];
-                        MessageWin.sendMessage.add(message);
-                        wrtJson(message, MessageWin.sendMessage);
-
-                    }
-                    if (vs[0] == "T")
-                    {
-                        message.ID = vs[1];
-                        //string line1 = vs[2].Substring(0, vs[2].IndexOf(Environment.NewLine));
-                        message.Sender = vs[2];
-                        //string conc = vs[4] + " " + vs[5];
-                        message.Body = vs[3];
-                        MessageWin.sendMessage.add(message);
-                        wrtJson(message, MessageWin.sendMessage);
-
-                    }
-                }
-            }
+            
+            
 
             void wrtJson(Message mess, MessageList messageList)
             {

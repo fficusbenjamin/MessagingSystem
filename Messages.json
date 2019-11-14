@@ -50,68 +50,6 @@
         "Sender": "fficusbenjamin@gmail.com",
         "Subject": "SIR 14/04/1986",
         "Body": "09-098-09\r\n Raid\r\n BodyTest"
-      },
-      {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "qrntList": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": [
-            "www.google.com"
-          ]
-        },
-        "MessageType": "Email",
-        "ID": "E578473598",
-        "Sender": "gigi@gmail.com",
-        "Subject": "fdhfsfgi",
-        "Body": "gfhgfhfsh <URL Quarantined>"
-      },
-      {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "qrntList": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": []
-        },
-        "MessageType": "Email",
-        "ID": "E123456789",
-        "Sender": "fficusbenjamin@gmail.com",
-        "Subject": "Help!",
-        "Body": "Please friend help me!"
-      },
-      {
-        "$type": "BusinessLayer.Tweet, BusinessLayer",
-        "tagList": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": []
-        },
-        "mntsList": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": []
-        },
-        "MessageType": "Tweet",
-        "ID": "T987654321",
-        "Sender": "@fficusbenjamin",
-        "Subject": null,
-        "Body": "Hey dude"
-      },
-      {
-        "$type": "BusinessLayer.Sms, BusinessLayer",
-        "MessageType": "SMS",
-        "ID": "S123456789",
-        "Sender": "+445678895433",
-        "Subject": null,
-        "Body": "I love you darling"
-      },
-      {
-        "$type": "BusinessLayer.Sir, BusinessLayer",
-        "sirList": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": []
-        },
-        "MessageType": "Email",
-        "ID": "E987654321",
-        "Sender": "fficusbenjamin@gmail.com",
-        "Subject": "SIR 14/04/1986",
-        "Body": "09-098-09\r\n Raid\r\n BodyTest"
       }
     ]
   }

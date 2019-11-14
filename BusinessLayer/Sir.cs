@@ -147,7 +147,7 @@ namespace BusinessLayer
                 throw new Exception("Field cannot be blank, Sport Centre Code");
 
             }
-            string sirItem = getFrstLine() + ", " + getScdLine();
+            string sirItem = getFrstLine() + ", " + getScdLine()+"\r\n";
             File.AppendAllText(@"..\..\..\..\SoftEngCoursework\sirlist.txt", sirItem);
 
 
