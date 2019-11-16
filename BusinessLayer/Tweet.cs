@@ -17,7 +17,7 @@ namespace BusinessLayer
             _messageType = "Tweet";
             _messageID = messageID;
             _sender = sender;          
-            _subject = subject;
+            _subject = null;
             _body = body;
         }
 
@@ -81,6 +81,20 @@ namespace BusinessLayer
 
         public string valBd(string val) 
         {
+
+            if (val == "")
+            {
+                val = null;
+                throw new Exception("Field cannot be blank, Twitter handle");
+
+            }
+
+            if (val.Length > 140)
+            {
+                val = null;
+                throw new Exception("Text cannot be longer than 140 characters");
+
+            }
             Regex rHsh = new Regex(@"\B(\#[a-zA-Z]+\b)(?!;)");
 
             Dictionary<string, string> textspeak = new Dictionary<string, string>();
