@@ -152,8 +152,8 @@ namespace SoftEngCoursework
                             message.ID = vs[1];
                             //string line1 = vs[2].Substring(0, vs[2].IndexOf(Environment.NewLine));
                             message.Sender = vs[2];
-                            //string conc = vs[4] + " " + vs[5];
-                            message.Body = vs[3];
+                            string conc = vs[3] + " " + vs[4];
+                            message.Body = conc;
                             MessageWin.sendMessage.add(message);
                             wrtJson(message, MessageWin.sendMessage);
 
@@ -163,8 +163,8 @@ namespace SoftEngCoursework
                             message.ID = vs[1];
                             //string line1 = vs[2].Substring(0, vs[2].IndexOf(Environment.NewLine));
                             message.Sender = vs[2];
-                            //string conc = vs[4] + " " + vs[5];
-                            message.Body = vs[3];
+                            string conc = vs[3] + " " + vs[4];
+                            message.Body = conc;
                             MessageWin.sendMessage.add(message);
                             wrtJson(message, MessageWin.sendMessage);
 
