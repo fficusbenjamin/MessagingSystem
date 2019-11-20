@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MessageWin" Height="450" Width="800">
     <Grid>
-        <Button x:Name="_bckBtn" Content="Back" HorizontalAlignment="Left" Margin="120,330,0,0" VerticalAlignment="Top" Width="90" Click="_bckBtn_Click"/>
+        <Button x:Name="_bckBtn" Content="Back" HorizontalAlignment="Left" Margin="120,330,0,0" VerticalAlignment="Top" Width="90" Click="_bckBtn_Click" BorderBrush="#FF007ACC" Background="#FF007ACC"/>
         <TextBox x:Name="_hdrTxt" HorizontalAlignment="Left" Height="25" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="Insert Header/ID" MaxLength="10" GotFocus="_hdrTxt_GotFocus" LostFocus="_hdrTxt_LostFocus"/>
         <TextBox x:Name="_bdyTxt" HorizontalAlignment="Left" Height="120" Margin="10,40,0,0" TextWrapping="Wrap" Text="Insert Body" Width="200" HorizontalScrollBarVisibility="Auto" AcceptsReturn="True" VerticalContentAlignment="Bottom" Grid.IsSharedSizeScope="True" VerticalScrollBarVisibility="Visible" LostFocus="_bdyTxt_LostFocus" GotFocus="_bdyTxt_GotFocus" VerticalAlignment="Top"/>
-        <Button x:Name="_sndBtn" Content="Send" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Width="91" Click="_sndBtn_Click" RenderTransformOrigin="0.638,-1.573"/>
+        <Button x:Name="_sndBtn" Content="Send" HorizontalAlignment="Left" Margin="10,330,0,0" VerticalAlignment="Top" Width="91" Click="_sndBtn_Click" RenderTransformOrigin="0.638,-1.573" Background="#FF007ACC" BorderBrush="#FF007ACC"/>
         <ListView x:Name="_lstAllMessages" HorizontalAlignment="Left" Height="398" Margin="254,1,0,0" VerticalAlignment="Top" Width="183" Loaded="_lstAllMessages_Loaded" SelectionChanged="_lstAllMessages_SelectionChanged">
             <ListView.View>
                 <GridView>
@@ -24,7 +24,7 @@
         <Label x:Name="_hdrLbl" Content="Message Header:" HorizontalAlignment="Left" Margin="475,50,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="_dsplBd" HorizontalAlignment="Left" Height="150" Margin="583,0,0,164.667" TextWrapping="Wrap" Width="200" IsReadOnly="True" VerticalAlignment="Bottom"/>
         <Label x:Name="_hdrBd" Content="Message Body:" HorizontalAlignment="Left" Margin="475,89,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="_fnshBtn" Content="End Session" HorizontalAlignment="Left" Margin="10,367,0,0" VerticalAlignment="Top" Width="200" Click="_fnshBtn_Click"/>
+        <Button x:Name="_fnshBtn" Content="End Session" HorizontalAlignment="Left" Margin="10,367,0,0" VerticalAlignment="Top" Width="200" Click="_fnshBtn_Click" Background="#FF007ACC" BorderBrush="#FF007ACC"/>
 
     </Grid>
 </Window>

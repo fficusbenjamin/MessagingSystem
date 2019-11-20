@@ -19,11 +19,11 @@
             <ColumnDefinition Width="117*"/>
             <ColumnDefinition Width="376*"/>
         </Grid.ColumnDefinitions>
-        <materialDesign:Card x:Name="title" Padding="32" Margin="16,16,16.334,0" Grid.ColumnSpan="2">
+        <materialDesign:Card x:Name="title" Padding="32" Margin="16,16,16.334,0" Grid.ColumnSpan="2" Background="#FFFDFDFE">
             <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}" FontWeight="Bold" TextAlignment="Center"><Span FontSize="16" FontFamily="Arial"><Run Text="Euston Leisure Messaging (ELM)"/></Span></TextBlock>
         </materialDesign:Card>
-        <Button x:Name="message_btn" Content="Message" HorizontalAlignment="Left" Margin="16,284,0,0" VerticalAlignment="Top" Width="200" Height="60" Click="message_btn_Click" FontWeight="Bold" Grid.ColumnSpan="2"/>
-        <Button x:Name="file_btn" Content="File" HorizontalAlignment="Left" Margin="159.759,284,0,0" VerticalAlignment="Top" Width="200" Height="60" Click="file_btn_Click" FontWeight="Bold" Grid.Column="1"/>
+        <Button x:Name="message_btn" Content="Message" HorizontalAlignment="Left" Margin="16,284,0,0" VerticalAlignment="Top" Width="200" Height="60" Click="message_btn_Click" FontWeight="Bold" Grid.ColumnSpan="2" Background="#FF007ACC" BorderBrush="#FF007ACC"/>
+        <Button x:Name="file_btn" Content="File" HorizontalAlignment="Left" Margin="159.759,284,0,0" VerticalAlignment="Top" Width="200" Height="60" Click="file_btn_Click" FontWeight="Bold" Grid.Column="1" Background="#FF007ACC" BorderBrush="#FF007ACC"/>
 
     </Grid>
 </Window>
