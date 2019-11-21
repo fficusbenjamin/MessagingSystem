@@ -1,11 +1,11 @@
-﻿using DB;
+﻿using BusinessLayer;
+using DB;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Windows;
-using BusinessLayer;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 namespace SoftEngCoursework
 {
@@ -15,8 +15,8 @@ namespace SoftEngCoursework
     public partial class MessageWin : Window
     {
         public static MessageList sendMessage = new MessageList();
-        public static MessageList _sendMessage 
-        { 
+        public static MessageList _sendMessage
+        {
             get { return sendMessage; }
             //set { return value; }
         }
@@ -33,7 +33,7 @@ namespace SoftEngCoursework
             addBx(sendMessage.messageList);
         }
 
-        
+
 
         private void validateEntry()
         {
@@ -46,18 +46,19 @@ namespace SoftEngCoursework
                 {
                     isEntryValid = false;
                     throw new ArgumentException("Field cannot be blank", "Message Header/ID");
-                } else
-                if (!rID.IsMatch(_hdrTxt.Text)) 
+                }
+                else
+                if (!rID.IsMatch(_hdrTxt.Text))
                 {
                     isEntryValid = false;
                     throw new ArgumentException("ID should start with S,E or T followed by nine numbers", "Message Header/ID");
                 }
 
                 idInput = _hdrTxt.Text;
-                typeChoice = idInput.Substring(0, 1);                
-                bodyInput = _bdyTxt.Text;             
-                
-                
+                typeChoice = idInput.Substring(0, 1);
+                bodyInput = _bdyTxt.Text;
+
+
             }
             catch (Exception execMsg)
             {
@@ -65,12 +66,12 @@ namespace SoftEngCoursework
             }
         }
 
-        private string spltTwo() 
+        private string spltTwo()
         {
             string[] line = _bdyTxt.Text.Split(new string[] { "\r\n" }, 2, StringSplitOptions.None);
             return line[1];
         }
-        
+
         private string getScndLine()
         {
             string[] line = Regex.Split(_bdyTxt.Text, "\r\n|\r|\n");
@@ -78,10 +79,10 @@ namespace SoftEngCoursework
         }
         private string getTrdLine()
         {
-            string[] line = _bdyTxt.Text.Split(new string[] { "\r\n" }, 3, StringSplitOptions.None); 
+            string[] line = _bdyTxt.Text.Split(new string[] { "\r\n" }, 3, StringSplitOptions.None);
             return line[2];
         }
-        
+
 
         private void addMessage()
         {
@@ -189,16 +190,16 @@ namespace SoftEngCoursework
                 MessageBox.Show(message.Message);
             }
 
-                
-        }
-            
-            
-            
-            
-            
-        
 
-        
+        }
+
+
+
+
+
+
+
+
 
         private void _hdrTxt_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -207,20 +208,20 @@ namespace SoftEngCoursework
 
         private void _hdrTxt_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (_hdrTxt.Text == "") 
+            if (_hdrTxt.Text == "")
             {
                 _hdrTxt.Text = "Insert Header/ID";
             }
-            
+
         }
 
         private void _bdyTxt_LostFocus(object sender, RoutedEventArgs e)
         {
-            if (_bdyTxt.Text == "") 
+            if (_bdyTxt.Text == "")
             {
                 _bdyTxt.Text = "Insert Body";
             }
-            
+
         }
 
         private void _lstAllMessages_Loaded(object sender, RoutedEventArgs e)
@@ -245,7 +246,7 @@ namespace SoftEngCoursework
             validateEntry();
             if (isEntryValid == true)
             {
-                addMessage();                
+                addMessage();
                 string output = JsonConvert.SerializeObject(_sendMessage.messageList);
                 _lstAllMessages.Items.Clear();
                 showList(sendMessage.messageList);
@@ -255,12 +256,12 @@ namespace SoftEngCoursework
 
         private void showList(List<Message> list)
         {
-            foreach (Message message in sendMessage.messageList) 
+            foreach (Message message in sendMessage.messageList)
             {
-                _lstAllMessages.Items.Add(message.ID+ " " + message.MessageType /*+ " " + message.Sender +" "+ message.Subject +" "+ message.Body*/);
-                
+                _lstAllMessages.Items.Add(message.ID + " " + message.MessageType /*+ " " + message.Sender +" "+ message.Subject +" "+ message.Body*/);
+
             }
-            
+
 
 
         }
@@ -273,7 +274,7 @@ namespace SoftEngCoursework
                 string selId = selMsg.Substring(0, 10);
 
                 Message message = find(selId);
-                
+
 
                 _dsplHdr.Text = selId;
                 _dsplType.Text = message.MessageType;
@@ -282,9 +283,9 @@ namespace SoftEngCoursework
             catch { }
         }
 
-        private void addBx(List<Message> list) 
+        private void addBx(List<Message> list)
         {
-            foreach (Message message in sendMessage.messageList) 
+            foreach (Message message in sendMessage.messageList)
             {
                 _dsplType.Text = message.MessageType;
                 _dsplHdr.Text = message.ID;
@@ -299,25 +300,25 @@ namespace SoftEngCoursework
             this.Close();
         }
 
-        public void wrtJson(Message mess, MessageList messageList) 
+        public void wrtJson(Message mess, MessageList messageList)
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
                 TypeNameHandling = TypeNameHandling.All
             };
 
-            if (File.Exists(fPth) != true) 
+            if (File.Exists(fPth) != true)
             {
                 File.Create(fPth);
             }
-            string jSon = File.ReadAllText(fPth);            
+            string jSon = File.ReadAllText(fPth);
             messageList = JsonConvert.DeserializeObject<MessageList>(jSon, settings);
             messageList.add(mess);
             var convJson = JsonConvert.SerializeObject(sendMessage, Formatting.Indented, settings);
-            File.WriteAllText(fPth,convJson);
+            File.WriteAllText(fPth, convJson);
         }
 
-        private void deserialize() 
+        private void deserialize()
         {
             JsonSerializerSettings settings = new JsonSerializerSettings
             {
@@ -341,7 +342,7 @@ namespace SoftEngCoursework
                     return m;
                 }
             }
-            
+
             return null;
         }
 

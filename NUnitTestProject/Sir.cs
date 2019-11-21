@@ -4,10 +4,9 @@ using System;
 
 namespace NUnitTestProject
 {
-    public class SmsTests
+    public class SirTests
     {
-        string tst = 
-        "Lorem ipsum dolor sit amet, id amet nec curabitur, quis sit pellentesque malesuada, risus quisque platea eros metus amet pellentesque. Lorem vel phasellus at, sed explicabo, ridiculus vulputate lacus at, eros venenatis cum semper mattis. Augue ligula mauris in, tortor tempus nunc imperdiet laoreet lorem, suspendisse praesent ultricies nam, ac malesuada diam eu ullamcorper, pharetra et cras tristique fermentum ad at. Eu dui massa tellus luctus fusce, lacus vel sodales hymenaeos felis sapien, at nam urna, nec fringilla eros nisl, sapien ac porta. Vel cum pellentesque vel adipiscing volutpat, lacus lacus. Morbi cursus wisi erat amet wisi consequat, ornare turpis pellentesque, aliquet id magna id vitae vitae eros, lacus a, vestibulum id ut a. A nisl lacinia suspendisse mauris diam, vel curabitur mattis curabitur eu mauris vel, mi in magna at vivamus. Etiam eros nunc, sed diam erat id mauris, integer in diam ante in tristique, et facilisi amet nulla eros in. Quisque tellus iaculis maecenas pulvinar, massa commodo lorem in etiam."+
+        string tst = "Lorem ipsum dolor sit amet, id amet nec curabitur, quis sit pellentesque malesuada, risus quisque platea eros metus amet pellentesque. Lorem vel phasellus at, sed explicabo, ridiculus vulputate lacus at, eros venenatis cum semper mattis. Augue ligula mauris in, tortor tempus nunc imperdiet laoreet lorem, suspendisse praesent ultricies nam, ac malesuada diam eu ullamcorper, pharetra et cras tristique fermentum ad at. Eu dui massa tellus luctus fusce, lacus vel sodales hymenaeos felis sapien, at nam urna, nec fringilla eros nisl, sapien ac porta. Vel cum pellentesque vel adipiscing volutpat, lacus lacus. Morbi cursus wisi erat amet wisi consequat, ornare turpis pellentesque, aliquet id magna id vitae vitae eros, lacus a, vestibulum id ut a. A nisl lacinia suspendisse mauris diam, vel curabitur mattis curabitur eu mauris vel, mi in magna at vivamus. Etiam eros nunc, sed diam erat id mauris, integer in diam ante in tristique, et facilisi amet nulla eros in. Quisque tellus iaculis maecenas pulvinar, massa commodo lorem in etiam." +
         "Neque aliquet, consequat justo impedit cumque voluptatibus mauris.Leo bibendum et, eu ac euismod elit volutpat, neque pariatur integer vestibulum, sit ac sed nec nec at non, ultrices in nam.Ligula luctus eros donec, arcu nunc blandit molestie nascetur, in per at venenatis non facilis, mi consequat morbi accumsan. Suspendisse vestibulum in sit, nulla eget sed laoreet felis integer nec.Fusce fringilla curabitur est massa, iaculis nec in odio.Nulla ligula felis ea feugiat, amet justo, turpis incididunt massa curabitur penatibus, a aenean neque eu mi. Imperdiet nascetur, tempor scelerisque sapien. Curabitur sit ipsum vel vulputate tellus ac, habitant ut velit wisi, mauris posuere sodales tempor nobis. Purus congue, justo dignissim aliquam, vehicula ipsum, dolor dignissim tristique eget suspendisse nulla a." +
         "Eget semper ac nibh ut sodales. Diam at donec gravida mauris nunc, ipsum rutrum arcu eget a, nunc non vitae fringilla.Ipsum mi libero.Adipiscing mattis odio, consectetuer integer et et, molestiae nulla, nunc amet penatibus sed varius.Porta risus sollicitudin nunc, sit cras facilisis id, ut arcu, posuere hendrerit vestibulum lorem eget. Qui arcu dui ligula purus, metus eget dolor, pellentesque ante culpa vestibulum sed parturient pretium, non pulvinar facilisi ac, id vel aliquet dolor vel nonummy." +
         "Nunc metus massa quisque, duis morbi elit consectetuer nibh dictum est, aliquam dolor.Habitant sodales lobortis ante sapien vitae, consequat dictum vivamus mauris in turpis, massa pharetra turpis donec hac pede. Nec sapien non suspendisse vitae donec, lorem nisl dictum, tortor adipiscing fermentum feugiat molestie, a ligula nibh in eaque, accumsan pede ornare vehicula consequat dui. Bibendum a est ante. Adipiscing amet turpis magna pede adipiscing ut, sed feugiat hac pellentesque hymenaeos, netus arcu voluptas.Tellus lacinia eleifend.Massa tincidunt. Nulla dolor auctor vel mauris vitae, quis suspendisse purus nunc molestie. Sed suscipit, vestibulum tortor posuere arcu id et.Nunc maecenas at lorem varius gravida, vel sit, in id, morbi vitae eget mauris et etiam, arcu et in sit cras. Vel et mattis laoreet wisi porta mauris, amet posuere pulvinar, nonummy praesent sed.Placerat nisl pellentesque diam ante, lobortis lectus dolor." +
@@ -21,7 +20,7 @@ namespace NUnitTestProject
         public void SenderTest()
         {
             MessageFactory factory = null;
-            factory = new SmsFactory("S123456789");
+            factory = new SirFactory("E123456789");
 
             Message message = factory.GetMessageType();
             Assert.Throws<Exception>(() => message.Sender = "");
@@ -30,10 +29,20 @@ namespace NUnitTestProject
             Assert.Throws<Exception>(() => message.Sender = ".,;'[]");
         }
         [Test]
+        public void SubjectTest()
+        {
+            MessageFactory factory = null;
+            factory = new SirFactory("E123456789");
+
+            Message message = factory.GetMessageType();
+            Assert.Throws<Exception>(() => message.Subject = "");
+            Assert.Throws<Exception>(() => message.Subject = tst);
+        }
+        [Test]
         public void BodyTest()
         {
             MessageFactory factory = null;
-            factory = new SmsFactory("S123456789");
+            factory = new SirFactory("E123456789");
 
             Message message = factory.GetMessageType();
             Assert.Throws<Exception>(() => message.Body = "");

@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using BusinessLayer;
-using DB;
 using System;
 
 namespace NUnitTestProject

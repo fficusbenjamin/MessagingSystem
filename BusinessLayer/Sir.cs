@@ -36,9 +36,11 @@ namespace BusinessLayer
         public override string Sender
         {
             get { return _sender; }
-            set {
+            set 
+            {
                 valSender(value);
-                _sender = value; }
+                _sender = value; 
+            }
         }
         public override string Subject
         { 
