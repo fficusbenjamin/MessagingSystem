@@ -7,6 +7,21 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
 
+
+
+///-------------------------------------------------------------------
+///   Class:          MainWindow (Window)
+///   Description:    This class hold all the properties and 
+///                   actions/methods required to interact with the 
+///                   form on the window in order to: read valued 
+///                   that the user has entered; validate them; 
+///                   create a message from them; add messages to 
+///                   the message list; display a list of all the  
+///                   messages. 
+///                   
+///   Author:         Francesco Fico (40404272)     Date: 27/11/2019
+///-------------------------------------------------------------------
+
 namespace SoftEngCoursework
 {
     /// <summary>
@@ -14,30 +29,37 @@ namespace SoftEngCoursework
     /// </summary>
     public partial class MainWindow : Window
     {
+        //creates a regular expression to check the SIR message subject
         Regex rSir = new Regex(@"SIR ([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}");
+        //path for the JSon file
         string fPth = @"..\..\..\..\SoftEngCoursework\Messages.json";
         public MainWindow()
         {
             InitializeComponent();
         }
 
+        //message button click action to open the message window
         private void message_btn_Click(object sender, RoutedEventArgs e)
         {
             MessageWin newWin = new MessageWin();
             newWin.Show();
             this.Close();
-
         }
 
+        //file button click action to select a file to import data
         private void file_btn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                //open the file dialog window
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 if (openFileDialog.ShowDialog() == true)
                 {
+                    //store the file name and path in a string
                     string path = openFileDialog.FileName;
+                    //calling the read file and passing the string with the path 
                     rdFile(path);
+                    //open the message window
                     MessageWin newWin = new MessageWin();
                     newWin.Show();
                     this.Close();

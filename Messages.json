@@ -3,56 +3,7 @@
   "messageList": {
     "$type": "System.Collections.Generic.List`1[[BusinessLayer.Message, BusinessLayer]], mscorlib",
     "$values": [
-      {
-        "$type": "BusinessLayer.Email, BusinessLayer",
-        "qrntList": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": []
-        },
-        "MessageType": "Email",
-        "ID": "E123456789",
-        "Sender": "fficusbenjamin@gmail.com",
-        "Subject": "Help!",
-        "Body": "Please friend help me!"
-      },
-      {
-        "$type": "BusinessLayer.Tweet, BusinessLayer",
-        "tagList": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": [
-            "#test"
-          ]
-        },
-        "mntsList": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": []
-        },
-        "MessageType": "Tweet",
-        "ID": "T987654321",
-        "Sender": "@fficusbenjamin",
-        "Subject": null,
-        "Body": "Hey dude #test"
-      },
-      {
-        "$type": "BusinessLayer.Sms, BusinessLayer",
-        "MessageType": "SMS",
-        "ID": "S123456789",
-        "Sender": "+445678895433",
-        "Subject": null,
-        "Body": "I love you darling LOL <Laughing out loud>"
-      },
-      {
-        "$type": "BusinessLayer.Sir, BusinessLayer",
-        "sirList": {
-          "$type": "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib",
-          "$values": []
-        },
-        "MessageType": "Email",
-        "ID": "E987654321",
-        "Sender": "fficusbenjamin@gmail.com",
-        "Subject": "SIR 14/04/1986",
-        "Body": "09-098-09\r\n Raid\r\n BodyTest"
-      }
+    
     ]
   }
 }
